@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1469B7001BC387CA009AF14D /* Back-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 1469B6F71BC387CA009AF14D /* Back-100.png */; };
+		1469B7011BC387CA009AF14D /* Back-120X120.png in Resources */ = {isa = PBXBuildFile; fileRef = 1469B6F81BC387CA009AF14D /* Back-120X120.png */; };
+		1469B7021BC387CA009AF14D /* BG.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1469B6F91BC387CA009AF14D /* BG.jpg */; };
+		1469B7031BC387CA009AF14D /* Login.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1469B6FA1BC387CA009AF14D /* Login.jpg */; };
+		1469B7041BC387CA009AF14D /* page 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1469B6FB1BC387CA009AF14D /* page 1.jpg */; };
+		1469B7051BC387CA009AF14D /* page 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1469B6FC1BC387CA009AF14D /* page 2.jpg */; };
+		1469B7061BC387CA009AF14D /* page 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1469B6FD1BC387CA009AF14D /* page 4.jpg */; };
+		1469B7071BC387CA009AF14D /* Shade-BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 1469B6FE1BC387CA009AF14D /* Shade-BG.png */; };
+		1469B7081BC387CA009AF14D /* Text Bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1469B6FF1BC387CA009AF14D /* Text Bg.png */; };
+		1469B70C1BC3A07D009AF14D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1469B70A1BC3A07D009AF14D /* LoginViewController.swift */; };
+		1469B70D1BC3A07D009AF14D /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1469B70B1BC3A07D009AF14D /* LoginViewController.xib */; };
+		1469B7101BC3D0EF009AF14D /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1469B70E1BC3D0EF009AF14D /* RegisterViewController.swift */; };
+		1469B7111BC3D0EF009AF14D /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1469B70F1BC3D0EF009AF14D /* RegisterViewController.xib */; };
 		1480B58A1BC25E7F00AE417B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1480B5891BC25E7F00AE417B /* AppDelegate.swift */; };
 		1480B58D1BC25E7F00AE417B /* Smarte.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1480B58B1BC25E7F00AE417B /* Smarte.xcdatamodeld */; };
 		1480B58F1BC25E7F00AE417B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1480B58E1BC25E7F00AE417B /* ViewController.swift */; };
@@ -14,6 +27,7 @@
 		1480B5941BC25E7F00AE417B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1480B5931BC25E7F00AE417B /* Images.xcassets */; };
 		1480B5971BC25E7F00AE417B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1480B5951BC25E7F00AE417B /* LaunchScreen.xib */; };
 		1480B5A31BC25E8000AE417B /* SmarteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1480B5A21BC25E8000AE417B /* SmarteTests.swift */; };
+		1480B5AF1BC2732600AE417B /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1480B5AE1BC2732600AE417B /* ViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +41,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1469B6F71BC387CA009AF14D /* Back-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Back-100.png"; path = "smartescreens/Back-100.png"; sourceTree = "<group>"; };
+		1469B6F81BC387CA009AF14D /* Back-120X120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Back-120X120.png"; path = "smartescreens/Back-120X120.png"; sourceTree = "<group>"; };
+		1469B6F91BC387CA009AF14D /* BG.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = BG.jpg; path = smartescreens/BG.jpg; sourceTree = "<group>"; };
+		1469B6FA1BC387CA009AF14D /* Login.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Login.jpg; path = smartescreens/Login.jpg; sourceTree = "<group>"; };
+		1469B6FB1BC387CA009AF14D /* page 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "page 1.jpg"; path = "smartescreens/page 1.jpg"; sourceTree = "<group>"; };
+		1469B6FC1BC387CA009AF14D /* page 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "page 2.jpg"; path = "smartescreens/page 2.jpg"; sourceTree = "<group>"; };
+		1469B6FD1BC387CA009AF14D /* page 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "page 4.jpg"; path = "smartescreens/page 4.jpg"; sourceTree = "<group>"; };
+		1469B6FE1BC387CA009AF14D /* Shade-BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Shade-BG.png"; path = "smartescreens/Shade-BG.png"; sourceTree = "<group>"; };
+		1469B6FF1BC387CA009AF14D /* Text Bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Text Bg.png"; path = "smartescreens/Text Bg.png"; sourceTree = "<group>"; };
+		1469B70A1BC3A07D009AF14D /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1469B70B1BC3A07D009AF14D /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		1469B70E1BC3D0EF009AF14D /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		1469B70F1BC3D0EF009AF14D /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		1480B5841BC25E7F00AE417B /* Smarte.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smarte.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1480B5881BC25E7F00AE417B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1480B5891BC25E7F00AE417B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +65,7 @@
 		1480B59C1BC25E7F00AE417B /* SmarteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmarteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1480B5A11BC25E7F00AE417B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1480B5A21BC25E8000AE417B /* SmarteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmarteTests.swift; sourceTree = "<group>"; };
+		1480B5AE1BC2732600AE417B /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +86,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1469B7091BC387CF009AF14D /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				1469B6F71BC387CA009AF14D /* Back-100.png */,
+				1469B6F81BC387CA009AF14D /* Back-120X120.png */,
+				1469B6F91BC387CA009AF14D /* BG.jpg */,
+				1469B6FA1BC387CA009AF14D /* Login.jpg */,
+				1469B6FB1BC387CA009AF14D /* page 1.jpg */,
+				1469B6FC1BC387CA009AF14D /* page 2.jpg */,
+				1469B6FD1BC387CA009AF14D /* page 4.jpg */,
+				1469B6FE1BC387CA009AF14D /* Shade-BG.png */,
+				1469B6FF1BC387CA009AF14D /* Text Bg.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		1469B7121BC3DA8D009AF14D /* Login View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1469B70A1BC3A07D009AF14D /* LoginViewController.swift */,
+				1469B70B1BC3A07D009AF14D /* LoginViewController.xib */,
+			);
+			name = "Login View Controller";
+			sourceTree = "<group>";
+		};
+		1469B7131BC3DAC2009AF14D /* Register View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1469B70E1BC3D0EF009AF14D /* RegisterViewController.swift */,
+				1469B70F1BC3D0EF009AF14D /* RegisterViewController.xib */,
+			);
+			name = "Register View Controller";
+			sourceTree = "<group>";
+		};
+		1469B7141BC3DAE0009AF14D /* View Controller  */ = {
+			isa = PBXGroup;
+			children = (
+				1480B58E1BC25E7F00AE417B /* ViewController.swift */,
+				1480B5AE1BC2732600AE417B /* ViewController.xib */,
+			);
+			name = "View Controller ";
+			sourceTree = "<group>";
+		};
 		1480B57B1BC25E7F00AE417B = {
 			isa = PBXGroup;
 			children = (
@@ -79,8 +150,11 @@
 		1480B5861BC25E7F00AE417B /* Smarte */ = {
 			isa = PBXGroup;
 			children = (
+				1469B7091BC387CF009AF14D /* Images */,
 				1480B5891BC25E7F00AE417B /* AppDelegate.swift */,
-				1480B58E1BC25E7F00AE417B /* ViewController.swift */,
+				1469B7141BC3DAE0009AF14D /* View Controller  */,
+				1469B7121BC3DA8D009AF14D /* Login View Controller */,
+				1469B7131BC3DAC2009AF14D /* Register View Controller */,
 				1480B5901BC25E7F00AE417B /* Main.storyboard */,
 				1480B5931BC25E7F00AE417B /* Images.xcassets */,
 				1480B5951BC25E7F00AE417B /* LaunchScreen.xib */,
@@ -195,8 +269,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1480B5AF1BC2732600AE417B /* ViewController.xib in Resources */,
+				1469B7061BC387CA009AF14D /* page 4.jpg in Resources */,
+				1469B7031BC387CA009AF14D /* Login.jpg in Resources */,
+				1469B7081BC387CA009AF14D /* Text Bg.png in Resources */,
 				1480B5921BC25E7F00AE417B /* Main.storyboard in Resources */,
+				1469B7051BC387CA009AF14D /* page 2.jpg in Resources */,
 				1480B5971BC25E7F00AE417B /* LaunchScreen.xib in Resources */,
+				1469B7041BC387CA009AF14D /* page 1.jpg in Resources */,
+				1469B7011BC387CA009AF14D /* Back-120X120.png in Resources */,
+				1469B7001BC387CA009AF14D /* Back-100.png in Resources */,
+				1469B7021BC387CA009AF14D /* BG.jpg in Resources */,
+				1469B7111BC3D0EF009AF14D /* RegisterViewController.xib in Resources */,
+				1469B7071BC387CA009AF14D /* Shade-BG.png in Resources */,
+				1469B70D1BC3A07D009AF14D /* LoginViewController.xib in Resources */,
 				1480B5941BC25E7F00AE417B /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,6 +301,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1469B70C1BC3A07D009AF14D /* LoginViewController.swift in Sources */,
+				1469B7101BC3D0EF009AF14D /* RegisterViewController.swift in Sources */,
 				1480B58F1BC25E7F00AE417B /* ViewController.swift in Sources */,
 				1480B58A1BC25E7F00AE417B /* AppDelegate.swift in Sources */,
 				1480B58D1BC25E7F00AE417B /* Smarte.xcdatamodeld in Sources */,
@@ -345,6 +433,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Smarte/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -355,6 +444,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Smarte/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -413,6 +503,7 @@
 				1480B5A81BC25E8000AE417B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1480B5A91BC25E8000AE417B /* Build configuration list for PBXNativeTarget "SmarteTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +512,7 @@
 				1480B5AB1BC25E8000AE417B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

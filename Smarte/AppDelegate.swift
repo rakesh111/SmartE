@@ -16,8 +16,61 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        
+        
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        
+        let nav1 = UINavigationController()
+        
+        
+        var mainView = ViewController() //ViewController = Name of your controller
+        //self.window?.rootViewController = mainView
+        
+       nav1.viewControllers = [mainView]
+//        
+//        nav1.navigationBar.backgroundColor = UIColor.clearColor()
+//        
+//        nav1.navigationBar.tintColor = UIColor.clearColor()
+        
+        
+      
+        
+        
+        if let window = window {
+            
+            
+            var view1 = UIView(frame: UIScreen.mainScreen().bounds)
+            
+            var imgview1 = UIImageView(frame: UIScreen.mainScreen().bounds)
+            imgview1.image = UIImage(named: ("Shade-BG.png"));
+            
+            
+            var imgview2 = UIImageView(frame: UIScreen.mainScreen().bounds)
+            imgview2.image = UIImage(named: ("BG.jpg"));
+            imgview2.contentMode = UIViewContentMode.ScaleAspectFill
+            
+                
+            view1.addSubview(imgview2)
+            view1.addSubview(imgview1)
+
+            
+            window.addSubview(view1)
+            
+            window.rootViewController = nav1
+            
+        }
+        
+        
+        
+        window?.makeKeyAndVisible()
+        
         // Override point for customization after application launch.
         return true
+
+        // Override point for customization after application launch.
+        
     }
 
     func applicationWillResignActive(application: UIApplication) {
