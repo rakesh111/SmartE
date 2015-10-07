@@ -9,6 +9,12 @@
 import UIKit
 
 class LoginPageViewController: UIViewController,UICollectionViewDataSource{
+  
+    
+    
+    
+    @IBOutlet weak var timeLbl: UILabel!
+    @IBOutlet weak var dateLbl: UILabel!
     
     
     @IBOutlet weak var attendanceCollectionView: UICollectionView!
@@ -16,20 +22,32 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
     @IBOutlet weak var DateCollectionView: UICollectionView!
     
     
+    
+    
      var dateCellIdentifier = "DATE_CELL"
     var dateCellIdentifier1 = "ATTENDANCE_CELL"
+    
+    
+    
+    
     
     init() {
         super.init(nibName : "LoginPageViewController", bundle:nil)
     }
     
+    
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
+    
 
     override func viewDidLoad() {
+        
+        
         super.viewDidLoad()
+        
+        date()
         self.navigationController?.navigationBarHidden = true
         
         var nibName = UINib(nibName: "DateCollectionViewCell", bundle: nil)
@@ -38,19 +56,76 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
         
         var nibName1 = UINib(nibName: "AttendanceCollectionViewCell", bundle: nil)
         
+        
+        
         self.attendanceCollectionView.registerNib(nibName1, forCellWithReuseIdentifier: dateCellIdentifier1)
+        
+//        var TimeFormat = NSDateFormatter()
+//       
+//        TimeFormat.timeStyle = .MediumStyle
+//        
+//    
+//        
+//        
+//        
+//        
+//        var timeString = "\(TimeFormat.stringFromDate(NSDate()))"
+//        
+//        timeLbl.text = "\(timeString)"
+        
+        //dateLbl.text = "\(currentTime)"
+        
+       
+        
+        
+       var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("timeLoop"), userInfo: nil, repeats: true)
+        
+    
+        
+        
         
 
     }
     
+    
+   
+    func timeLoop()
+    {
+        var TimeFormat = NSDateFormatter()
+        
+        TimeFormat.timeStyle = .MediumStyle
+        
+        
+        
+        
+        
+        
+        var timeString = "\(TimeFormat.stringFromDate(NSDate()))"
+        
+        timeLbl.text = "\(timeString)"
+
+    }
+    
+    func date(){
+        
+        var dateFormat = NSDate()
+        
+        var TimeFormat = NSDateFormatter()
+        
+        TimeFormat.dateFormat = "dd-MMM-YYYY"
+    dateLbl.text = "\(TimeFormat.stringFromDate(dateFormat))"
+    
+    }
+    
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         
         if(collectionView == self.DateCollectionView ){
-            return 5 as Int
+            return 4 as Int
         }
         
         else {
-            return 5 as Int
+            return 1 as Int
         }
         
         

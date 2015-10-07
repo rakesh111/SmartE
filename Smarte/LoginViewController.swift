@@ -36,7 +36,7 @@ class LoginViewController: UIViewController {
         var logPushVC = LoginPageViewController()
         
         
-        //view.alpha=0;
+        view.alpha=0;
         
         self.navigationController?.pushViewController(logPushVC, animated: true)
 
