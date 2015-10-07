@@ -28,6 +28,12 @@
 		1480B5971BC25E7F00AE417B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1480B5951BC25E7F00AE417B /* LaunchScreen.xib */; };
 		1480B5A31BC25E8000AE417B /* SmarteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1480B5A21BC25E8000AE417B /* SmarteTests.swift */; };
 		1480B5AF1BC2732600AE417B /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1480B5AE1BC2732600AE417B /* ViewController.xib */; };
+		148BDA9E1BC4F561007803B2 /* LoginPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148BDA9C1BC4F561007803B2 /* LoginPageViewController.swift */; };
+		148BDA9F1BC4F561007803B2 /* LoginPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148BDA9D1BC4F561007803B2 /* LoginPageViewController.xib */; };
+		148BDAA41BC502BB007803B2 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148BDAA21BC502BB007803B2 /* DateCollectionViewCell.swift */; };
+		148BDAA51BC502BB007803B2 /* DateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148BDAA31BC502BB007803B2 /* DateCollectionViewCell.xib */; };
+		148BDAA81BC508D4007803B2 /* AttendanceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148BDAA61BC508D4007803B2 /* AttendanceCollectionViewCell.swift */; };
+		148BDAA91BC508D4007803B2 /* AttendanceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148BDAA71BC508D4007803B2 /* AttendanceCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +72,12 @@
 		1480B5A11BC25E7F00AE417B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1480B5A21BC25E8000AE417B /* SmarteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmarteTests.swift; sourceTree = "<group>"; };
 		1480B5AE1BC2732600AE417B /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		148BDA9C1BC4F561007803B2 /* LoginPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPageViewController.swift; sourceTree = "<group>"; };
+		148BDA9D1BC4F561007803B2 /* LoginPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginPageViewController.xib; sourceTree = "<group>"; };
+		148BDAA21BC502BB007803B2 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
+		148BDAA31BC502BB007803B2 /* DateCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateCollectionViewCell.xib; sourceTree = "<group>"; };
+		148BDAA61BC508D4007803B2 /* AttendanceCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendanceCollectionViewCell.swift; sourceTree = "<group>"; };
+		148BDAA71BC508D4007803B2 /* AttendanceCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttendanceCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				1469B70E1BC3D0EF009AF14D /* RegisterViewController.swift */,
+				148BDAA11BC4F5B3007803B2 /* LoginPageViewController */,
 				1469B70F1BC3D0EF009AF14D /* RegisterViewController.xib */,
 			);
 			name = "Register View Controller";
@@ -187,6 +200,19 @@
 				1480B5A11BC25E7F00AE417B /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		148BDAA11BC4F5B3007803B2 /* LoginPageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				148BDA9C1BC4F561007803B2 /* LoginPageViewController.swift */,
+				148BDA9D1BC4F561007803B2 /* LoginPageViewController.xib */,
+				148BDAA21BC502BB007803B2 /* DateCollectionViewCell.swift */,
+				148BDAA31BC502BB007803B2 /* DateCollectionViewCell.xib */,
+				148BDAA61BC508D4007803B2 /* AttendanceCollectionViewCell.swift */,
+				148BDAA71BC508D4007803B2 /* AttendanceCollectionViewCell.xib */,
+			);
+			name = LoginPageViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,6 +296,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1480B5AF1BC2732600AE417B /* ViewController.xib in Resources */,
+				148BDA9F1BC4F561007803B2 /* LoginPageViewController.xib in Resources */,
+				148BDAA91BC508D4007803B2 /* AttendanceCollectionViewCell.xib in Resources */,
 				1469B7061BC387CA009AF14D /* page 4.jpg in Resources */,
 				1469B7031BC387CA009AF14D /* Login.jpg in Resources */,
 				1469B7081BC387CA009AF14D /* Text Bg.png in Resources */,
@@ -282,6 +310,7 @@
 				1469B7021BC387CA009AF14D /* BG.jpg in Resources */,
 				1469B7111BC3D0EF009AF14D /* RegisterViewController.xib in Resources */,
 				1469B7071BC387CA009AF14D /* Shade-BG.png in Resources */,
+				148BDAA51BC502BB007803B2 /* DateCollectionViewCell.xib in Resources */,
 				1469B70D1BC3A07D009AF14D /* LoginViewController.xib in Resources */,
 				1480B5941BC25E7F00AE417B /* Images.xcassets in Resources */,
 			);
@@ -304,8 +333,11 @@
 				1469B70C1BC3A07D009AF14D /* LoginViewController.swift in Sources */,
 				1469B7101BC3D0EF009AF14D /* RegisterViewController.swift in Sources */,
 				1480B58F1BC25E7F00AE417B /* ViewController.swift in Sources */,
+				148BDA9E1BC4F561007803B2 /* LoginPageViewController.swift in Sources */,
 				1480B58A1BC25E7F00AE417B /* AppDelegate.swift in Sources */,
 				1480B58D1BC25E7F00AE417B /* Smarte.xcdatamodeld in Sources */,
+				148BDAA41BC502BB007803B2 /* DateCollectionViewCell.swift in Sources */,
+				148BDAA81BC508D4007803B2 /* AttendanceCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

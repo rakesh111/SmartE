@@ -30,6 +30,20 @@ class LoginViewController: UIViewController {
         
         
     }
+    
+    @IBAction func loginPush(sender : AnyObject)
+    {
+        var logPushVC = LoginPageViewController()
+        
+        
+        //view.alpha=0;
+        
+        self.navigationController?.pushViewController(logPushVC, animated: true)
+
+        
+        
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
