@@ -21,11 +21,22 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
     
     @IBOutlet weak var DateCollectionView: UICollectionView!
     
+   
     
     
     
      var dateCellIdentifier = "DATE_CELL"
     var dateCellIdentifier1 = "ATTENDANCE_CELL"
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        view.alpha=1
+        
+        super.viewWillAppear(animated)
+    }
+
+    
     
     
     
@@ -47,7 +58,7 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
         
         super.viewDidLoad()
         
-        date()
+        configureDate()
         self.navigationController?.navigationBarHidden = true
         
         var nibName = UINib(nibName: "DateCollectionViewCell", bundle: nil)
@@ -60,23 +71,6 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
         
         self.attendanceCollectionView.registerNib(nibName1, forCellWithReuseIdentifier: dateCellIdentifier1)
         
-//        var TimeFormat = NSDateFormatter()
-//       
-//        TimeFormat.timeStyle = .MediumStyle
-//        
-//    
-//        
-//        
-//        
-//        
-//        var timeString = "\(TimeFormat.stringFromDate(NSDate()))"
-//        
-//        timeLbl.text = "\(timeString)"
-        
-        //dateLbl.text = "\(currentTime)"
-        
-       
-        
         
        var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("timeLoop"), userInfo: nil, repeats: true)
         
@@ -88,6 +82,12 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
     }
     
     
+    @IBAction func loginPageViewBackButton(sender: AnyObject) {
+        
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as! [UIViewController];
+        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 2], animated: true);
+
+    }
    
     func timeLoop()
     {
@@ -106,13 +106,15 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
 
     }
     
-    func date(){
+
+    
+    func configureDate(){
         
         var dateFormat = NSDate()
         
         var TimeFormat = NSDateFormatter()
         
-        TimeFormat.dateFormat = "dd-MMM-YYYY"
+        TimeFormat.dateFormat = "dd-MM-YYYY"
     dateLbl.text = "\(TimeFormat.stringFromDate(dateFormat))"
     
     }

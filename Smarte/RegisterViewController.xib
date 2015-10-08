@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterViewController" customModule="Smarte" customModuleProvider="target">
             <connections>
+                <outlet property="regPassWordTxtField" destination="LfG-rZ-2vq" id="fwa-71-fuC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

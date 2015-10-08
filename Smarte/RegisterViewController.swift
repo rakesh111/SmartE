@@ -20,15 +20,27 @@ class RegisterViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    @IBOutlet weak var regPassWordTxtField: UITextField!
 
         override func viewDidLoad() {
         
         self.navigationController?.navigationBarHidden = true
         super.viewDidLoad()
             
+            configurePasswordTxtField()
+            
             
 
      
+    }
+    
+    func configurePasswordTxtField(){
+        
+        regPassWordTxtField.secureTextEntry = true
+        
+        
+        
+        
     }
     
     

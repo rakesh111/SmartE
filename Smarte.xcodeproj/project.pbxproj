@@ -34,6 +34,7 @@
 		148BDAA51BC502BB007803B2 /* DateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148BDAA31BC502BB007803B2 /* DateCollectionViewCell.xib */; };
 		148BDAA81BC508D4007803B2 /* AttendanceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148BDAA61BC508D4007803B2 /* AttendanceCollectionViewCell.swift */; };
 		148BDAA91BC508D4007803B2 /* AttendanceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148BDAA71BC508D4007803B2 /* AttendanceCollectionViewCell.xib */; };
+		148C1BAF1BC6511A00EEE9CF /* smarteee.png in Resources */ = {isa = PBXBuildFile; fileRef = 148C1BAE1BC6511A00EEE9CF /* smarteee.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		148BDAA31BC502BB007803B2 /* DateCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateCollectionViewCell.xib; sourceTree = "<group>"; };
 		148BDAA61BC508D4007803B2 /* AttendanceCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendanceCollectionViewCell.swift; sourceTree = "<group>"; };
 		148BDAA71BC508D4007803B2 /* AttendanceCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttendanceCollectionViewCell.xib; sourceTree = "<group>"; };
+		148C1BAE1BC6511A00EEE9CF /* smarteee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smarteee.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				1469B6F91BC387CA009AF14D /* BG.jpg */,
 				1469B6FA1BC387CA009AF14D /* Login.jpg */,
 				1469B6FB1BC387CA009AF14D /* page 1.jpg */,
+				148C1BAE1BC6511A00EEE9CF /* smarteee.png */,
 				1469B6FC1BC387CA009AF14D /* page 2.jpg */,
 				1469B6FD1BC387CA009AF14D /* page 4.jpg */,
 				1469B6FE1BC387CA009AF14D /* Shade-BG.png */,
@@ -126,9 +129,9 @@
 		1469B7131BC3DAC2009AF14D /* Register View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				1469B70E1BC3D0EF009AF14D /* RegisterViewController.swift */,
-				148BDAA11BC4F5B3007803B2 /* LoginPageViewController */,
 				1469B70F1BC3D0EF009AF14D /* RegisterViewController.xib */,
+				1469B70E1BC3D0EF009AF14D /* RegisterViewController.swift */,
+				148C1BAD1BC6356000EEE9CF /* New Group */,
 			);
 			name = "Register View Controller";
 			sourceTree = "<group>";
@@ -213,6 +216,14 @@
 				148BDAA71BC508D4007803B2 /* AttendanceCollectionViewCell.xib */,
 			);
 			name = LoginPageViewController;
+			sourceTree = "<group>";
+		};
+		148C1BAD1BC6356000EEE9CF /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				148BDAA11BC4F5B3007803B2 /* LoginPageViewController */,
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,6 +317,7 @@
 				1480B5971BC25E7F00AE417B /* LaunchScreen.xib in Resources */,
 				1469B7041BC387CA009AF14D /* page 1.jpg in Resources */,
 				1469B7011BC387CA009AF14D /* Back-120X120.png in Resources */,
+				148C1BAF1BC6511A00EEE9CF /* smarteee.png in Resources */,
 				1469B7001BC387CA009AF14D /* Back-100.png in Resources */,
 				1469B7021BC387CA009AF14D /* BG.jpg in Resources */,
 				1469B7111BC3D0EF009AF14D /* RegisterViewController.xib in Resources */,

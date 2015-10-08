@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController,UITextFieldDelegate {
     
    
     
@@ -20,7 +20,22 @@ class LoginViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @IBOutlet weak var usernameTxtField: UITextField!
 
+    @IBOutlet weak var passwordTxtField: UITextField!
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        view.alpha=1
+        
+        super.viewWillAppear(animated)
+    }
+
+    
+    
+    
+    
     @IBAction func logInBackButtonAction(sender: AnyObject) {
         
         let viewControllers: [UIViewController] = self.navigationController!.viewControllers as! [UIViewController];
@@ -29,6 +44,16 @@ class LoginViewController: UIViewController {
         
         
         
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange,
+        replacementString string: String) -> Bool
+    {
+        let maxLength = 23
+        let currentString: NSString = textField.text
+        let newString: NSString =
+        currentString.stringByReplacingCharactersInRange(range, withString: string)
+        return newString.length <= maxLength
     }
     
     @IBAction func loginPush(sender : AnyObject)
@@ -44,9 +69,39 @@ class LoginViewController: UIViewController {
         
         
     }
+    
+    
+    func configurePasswordTxtField(){
+        
+        //passwordTxtField = UITextField()
+        
+        passwordTxtField.secureTextEntry = true
+        
+        passwordTxtField.delegate = self
+        
+        
+    }
+    
+    func configureUsernameTxtField(){
+        
+        usernameTxtField.delegate = self
+    }
+    
+    
+    
+    
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configurePasswordTxtField()
+        
+        configureUsernameTxtField()
+        
+        
+        
 
     }
 

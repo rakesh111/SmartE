@@ -6,6 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Smarte" customModuleProvider="target">
             <connections>
+                <outlet property="passwordTxtField" destination="Su0-9Q-nZH" id="sHI-uW-IhJ"/>
+                <outlet property="usernameTxtField" destination="xX5-aA-WJb" id="IaE-0h-Qhx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="Ggd-y9-E3x"/>
             </connections>
         </placeholder>
@@ -33,10 +35,10 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wb2-s0-hi3">
-                    <rect key="frame" x="78" y="32" width="207" height="26"/>
+                    <rect key="frame" x="78" y="30" width="207" height="26"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
