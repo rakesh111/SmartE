@@ -39,9 +39,11 @@ class ViewController: UIViewController {
         
             }
     
+
+    
     override func viewWillAppear(animated: Bool) {
         
-        view.alpha=1
+        view.alpha = 1
         
         super.viewWillAppear(animated)
     }

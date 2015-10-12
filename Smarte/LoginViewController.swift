@@ -79,6 +79,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         
         passwordTxtField.delegate = self
         
+                
         
     }
     
@@ -99,6 +100,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         configurePasswordTxtField()
         
         configureUsernameTxtField()
+        
+    
         
         
         

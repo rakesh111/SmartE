@@ -141,7 +141,7 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
           var cella = collectionView.dequeueReusableCellWithReuseIdentifier(dateCellIdentifier, forIndexPath: indexPath) as! DateCollectionViewCell
             
             
-            cella.datelbl.text = "ssssss"
+            cella.datelbl.text = "Today"
             
             return cella
             
@@ -152,7 +152,7 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
             var cellb = collectionView.dequeueReusableCellWithReuseIdentifier(dateCellIdentifier1, forIndexPath: indexPath) as! AttendanceCollectionViewCell
             
             
-            cellb.attendlbl.text = "aaaaaa"
+            cellb.attendlbl.text = "Tomorrow"
             
             return cellb
             
