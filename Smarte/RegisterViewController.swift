@@ -61,6 +61,11 @@ class RegisterViewController: UIViewController,UITextFieldDelegate{
         
         
     }
+    @IBAction func tapped(sender: AnyObject) {
+        
+        scrlView.endEditing(true)
+         scrlView .setContentOffset(CGPointMake(0, 0), animated: true)
+    }
     
     func configureTextFieldDelegate(){
         regFirstNameTxtField.delegate = self
@@ -74,17 +79,25 @@ class RegisterViewController: UIViewController,UITextFieldDelegate{
     
     func textFieldDidBeginEditing(textField: UITextField) {
         
-        scrlView.contentOffset = CGPointMake(0, textField.frame.origin.y)
+        scrlView .setContentOffset(CGPointMake(0, textField.frame.origin.y), animated: true)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         
         textField.resignFirstResponder()
         
-        scrlView.contentOffset = CGPointMake(0, 0)
+        scrlView .setContentOffset(CGPointMake(0, 0), animated: true)
         
         
         return true
+        
+    }
+    
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        
+        
+        
         
     }
     

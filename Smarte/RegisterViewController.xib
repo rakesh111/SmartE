@@ -118,8 +118,10 @@
                             </connections>
                         </button>
                     </subviews>
+                    <gestureRecognizers/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="lAa-b9-QzS"/>
+                        <outletCollection property="gestureRecognizers" destination="gUJ-Lu-NES" appends="YES" id="Zpi-db-OcJ"/>
                     </connections>
                 </scrollView>
             </subviews>
@@ -127,6 +129,11 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="294.5" y="329.5"/>
         </view>
+        <tapGestureRecognizer id="gUJ-Lu-NES">
+            <connections>
+                <action selector="tapped:" destination="-1" id="3Ag-BC-N6Z"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="Back-120X120.png" width="120" height="120"/>
