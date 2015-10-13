@@ -49,7 +49,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange,
         replacementString string: String) -> Bool
     {
-        let maxLength = 23
+        let maxLength = 22
         let currentString: NSString = textField.text
         let newString: NSString =
         currentString.stringByReplacingCharactersInRange(range, withString: string)
@@ -67,6 +67,12 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
 
         
         
+        
+    }
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        
+    view.endEditing(true)
         
     }
     

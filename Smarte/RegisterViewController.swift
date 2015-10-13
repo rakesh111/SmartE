@@ -29,9 +29,18 @@ class RegisterViewController: UIViewController,UITextFieldDelegate{
 
     @IBOutlet weak var regButton: UIButton!
     
+    override func viewWillAppear(animated: Bool) {
+        
+        view.alpha=1;
+        
+        super.viewWillAppear(animated)
+    }
+
+    
     
         override func viewDidLoad() {
-        
+            
+                   
         self.navigationController?.navigationBarHidden = true
             
             configureTextFieldDelegate()
@@ -51,6 +60,17 @@ class RegisterViewController: UIViewController,UITextFieldDelegate{
      
     }
     
+    @IBAction func regButton(sender: AnyObject) {
+        
+        var regPushVC = LoginPageViewController()
+        
+        
+        view.alpha=0;
+        
+        self.navigationController?.pushViewController(regPushVC, animated:true)
+        
+        
+    }
     func configurePasswordTxtField(){
         
         regPassWordTxtField.secureTextEntry = true
@@ -94,12 +114,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate{
     }
     
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        
-        
-        
-        
-    }
+    
     
     @IBAction func registerBack(sender: AnyObject) {
         
@@ -112,7 +127,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate{
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange,
         replacementString string: String) -> Bool
     {
-        let maxLength = 23
+        let maxLength = 22
         let currentString: NSString = textField.text
         let newString: NSString =
         currentString.stringByReplacingCharactersInRange(range, withString: string)
