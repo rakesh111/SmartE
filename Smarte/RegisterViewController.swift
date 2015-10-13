@@ -38,6 +38,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate{
 
     
     
+    
         override func viewDidLoad() {
             
                    
@@ -106,6 +107,11 @@ class RegisterViewController: UIViewController,UITextFieldDelegate{
         
         textField.resignFirstResponder()
         
+        
+        
+        
+        
+    
         scrlView .setContentOffset(CGPointMake(0, 0), animated: true)
         
         

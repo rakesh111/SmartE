@@ -31,6 +31,8 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
     
     override func viewWillAppear(animated: Bool) {
         
+        
+        
         view.alpha=1
         
         super.viewWillAppear(animated)
@@ -57,6 +59,8 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
         
         
         super.viewDidLoad()
+        
+        
         
         configureDate()
         self.navigationController?.navigationBarHidden = true
