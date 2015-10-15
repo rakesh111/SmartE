@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class LoginPageViewController: UIViewController,UICollectionViewDataSource{
   
     
@@ -76,6 +78,7 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
         self.attendanceCollectionView.registerNib(nibName1, forCellWithReuseIdentifier: dateCellIdentifier1)
         
         
+        
        var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("timeLoop"), userInfo: nil, repeats: true)
         
     
@@ -116,6 +119,8 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
         
         var dateFormat = NSDate()
         
+        
+        
         var TimeFormat = NSDateFormatter()
         
         TimeFormat.dateFormat = "dd-MM-YYYY"
@@ -131,8 +136,11 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
         }
         
         else {
-            return 1 as Int
+            
+            return 2 as Int
         }
+        
+        
         
         
     }
@@ -156,7 +164,7 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
             var cellb = collectionView.dequeueReusableCellWithReuseIdentifier(dateCellIdentifier1, forIndexPath: indexPath) as! AttendanceCollectionViewCell
             
             
-            cellb.attendlbl.text = "Tomorrow"
+            cellb.attendlbl.text = "Today"
             
             return cellb
             

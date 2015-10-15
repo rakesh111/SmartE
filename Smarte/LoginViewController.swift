@@ -33,8 +33,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     }
 
     
-    
-    
+
     
     @IBAction func logInBackButtonAction(sender: AnyObject) {
         
@@ -46,16 +45,17 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         
     }
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange,
-        replacementString string: String) -> Bool
-    {
-        let maxLength = 22
-        let currentString: NSString = textField.text
-        let newString: NSString =
-        currentString.stringByReplacingCharactersInRange(range, withString: string)
-        return newString.length <= maxLength
-    }
     
+    
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        let length = count(textField.text.utf16) + count(string.utf16)-range.length
+        return length <= 15
+    
+        
+        
+
+    }
     @IBAction func loginPush(sender : AnyObject)
     {
         var logPushVC = LoginPageViewController()
@@ -63,9 +63,10 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         
         view.alpha=0;
         
+        
+        
         self.navigationController?.pushViewController(logPushVC, animated: true)
 
-        
         
         
     }

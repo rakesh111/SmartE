@@ -78,9 +78,6 @@ class RegisterViewController: UIViewController,UITextFieldDelegate{
         
         regPassWordTxtField.delegate = self
         
-        
-        
-        
     }
     @IBAction func tapped(sender: AnyObject) {
         
@@ -130,16 +127,13 @@ class RegisterViewController: UIViewController,UITextFieldDelegate{
         
     }
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange,
-        replacementString string: String) -> Bool
-    {
-        let maxLength = 22
-        let currentString: NSString = textField.text
-        let newString: NSString =
-        currentString.stringByReplacingCharactersInRange(range, withString: string)
-        return newString.length <= maxLength
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        let length = count(textField.text.utf16) + count(string.utf16) - range.length
+        
+        return length <= 20
+        
     }
-    
     
 
 
