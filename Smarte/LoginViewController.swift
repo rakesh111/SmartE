@@ -29,7 +29,12 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         
         view.alpha=1
         
+        
+        
+        
         super.viewWillAppear(animated)
+        
+        
     }
 
     

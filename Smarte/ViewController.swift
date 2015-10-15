@@ -81,6 +81,8 @@ class ViewController: UIViewController {
         
         var logVC = LoginViewController()
         
+        
+        
           view.alpha=0;
         
         self.navigationController?.pushViewController(logVC, animated: true)
