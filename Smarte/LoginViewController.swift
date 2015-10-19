@@ -63,11 +63,14 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     }
     @IBAction func loginPush(sender : AnyObject)
     {
+        
+        
         var logPushVC = LoginPageViewController()
         
         
         view.alpha=0;
         
+               
         
         
         self.navigationController?.pushViewController(logPushVC, animated: true)
@@ -80,6 +83,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         
     view.endEditing(true)
         
+        
+        
     }
     
     
@@ -89,7 +94,11 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         
         passwordTxtField.secureTextEntry = true
         
+        
+        
         passwordTxtField.delegate = self
+        
+        
         
                 
         

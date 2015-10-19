@@ -1,0 +1,115 @@
+{
+    "beacons":{
+        "items":[{"name":"Table #1",
+                 "description":"",
+                 "tableNumber":"1",
+                 "entryMessage":"Welcome to Restaurant 1!",
+                 "majorminor":"36231-16757",
+                 "uuid":"B9407F30-F5F8-466E-AFF9-25556B57FE6D"
+                 },
+                 {
+                 "name":"Table #2",
+                 "description":"",
+                 "tableNumber":"2",
+                 "entryMessage":"Welcome to Restaurant 2!",
+                 "majorminor":"35773-52847",
+                 "uuid":"B9407F30-F5F8-466E-AFF9-25556B57FE6D"
+                 },
+                 {
+                 "name":"Table #3",
+                 "description":"",
+                 "tableNumber":"3",
+                 "entryMessage":"Welcome to Restaurant 3!",
+                 "majorminor":"40271-28318",
+                 "uuid":"B9407F30-F5F8-466E-AFF9-25556B57FE6D"
+                 },
+                 {"name":"Table #5",
+                 "description":"test Beacon Blue",
+                 "tableNumber":"5",
+                 "entryMessage":"Welcome to Restaurant 5!",
+                 "majorminor":"27150-47150",
+                 "uuid":"B9407F30-F5F8-466E-AFF9-25556B57FE6D"
+                 },
+                 {"name":"Table #6",
+                 "description":"test Beacon Green",
+                 "tableNumber":"6",
+                 "entryMessage":"Welcome to Restaurant 6!",
+                 "majorminor":"23460-39730",
+                 "uuid":"B9407F30-F5F8-466E-AFF9-25556B57FE6D"
+                 },
+                 {"name":"Table #7",
+                 "description":"test Beacon light Blue",
+                 "tableNumber":"7",
+                 "entryMessage":"Welcome to Restaurant 7!",
+                 "majorminor":"21787-46269",
+                 "uuid":"B9407F30-F5F8-466E-AFF9-25556B57FE6D"
+                 },
+                 {"name":"Table #8",
+                 "description":"test Beacon green2",
+                 "tableNumber":"8",
+                 "entryMessage":"Welcome to Restaurant 8!",
+                 "majorminor":"36485-15423",
+                 "uuid":"B9407F30-F5F8-466E-AFF9-25556B57FE6D"
+                 },
+                 {"name":"Table #10",
+                 "description":"test Beacon GIMBAL",
+                 "tableNumber":"10",
+                 "entryMessage":"Welcome to Restaurant 10!"
+                 "majorminor":"5551-5552",
+                 "uuid":"ABCD5555-A555-B555-C555-ABCD55555555"
+                 },
+                 {"name":"Table #11",
+                 "description":"test Beacon GIMBAL",
+                 "tableNumber":"11",
+                 "entryMessage":"Welcome to Restaurant 11!",
+                 "majorminor":"67-67",
+                 "uuid":"ABCD0001-A000-B000-C000-ABCD00000001"
+                 },
+                 {"name":"Table #12",
+                 "description":"test Beacon GIMBAL",
+                 "tableNumber":"12",
+                 "entryMessage":"Welcome to Restaurant 12!",
+                 "majorminor":"52-52",
+                 "uuid":"ABCD0001-A000-B000-C000-ABCD00000001"
+                 },
+                 {"name":"Table #13",
+                 "description":"test Beacon KONTAKT",
+                 "tableNumber":"13",
+                 "entryMessage":"Welcome to Restaurant 13!",
+                 "majorminor":"16497-14267",
+                 "uuid":"f7826da6-4fa2-4e98-8024-bc5b71e0893e"
+                 },
+                 {"name":"Table #14",
+                 "description":"test Beacon KONTAKT",
+                 "tableNumber":"14",
+                 "entryMessage":"Welcome to Restaurant 14!",
+                 "majorminor":"61289-11433",
+                 "uuid":"f7826da6-4fa2-4e98-8024-bc5b71e0893e"
+                 },
+                 {"name":"Table #15",
+                 "description":"test Beacon KONTAKT",
+                 "tableNumber":"15",
+                 "entryMessage":"Welcome to Restaurant 15!",
+                 "majorminor":"51491-56363",
+                 "uuid":"f7826da6-4fa2-4e98-8024-bc5b71e0893e"
+                 },
+                 {"name":"Table #16",
+                 "description":"test Beacon ESTIMOTE",
+                 "tableNumber":"16",
+                 "entryMessage":"Welcome to Restaurant 16!",
+                 "majorminor":"32975-33025",
+                 "uuid":"B9407F30-F5F8-466E-AFF9-25556B57FE6D"
+                 },
+                 {"name":"Table #17",
+                 "description":"test Beacon ESTIMOTE",
+                 "tableNumber":"17",
+                 "entryMessage":"Welcome to Restaurant 17!",
+                 "majorminor":"64597-9842",
+                 "uuid":"B9407F30-F5F8-466E-AFF9-25556B57FE6D"
+                 }]
+    },
+    "responseVO":{
+        "status":1,
+        "message":"Success!"
+    }
+}

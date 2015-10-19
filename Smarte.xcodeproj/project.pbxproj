@@ -35,6 +35,9 @@
 		148BDAA81BC508D4007803B2 /* AttendanceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148BDAA61BC508D4007803B2 /* AttendanceCollectionViewCell.swift */; };
 		148BDAA91BC508D4007803B2 /* AttendanceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 148BDAA71BC508D4007803B2 /* AttendanceCollectionViewCell.xib */; };
 		148C1BAF1BC6511A00EEE9CF /* smarteee.png in Resources */ = {isa = PBXBuildFile; fileRef = 148C1BAE1BC6511A00EEE9CF /* smarteee.png */; };
+		148D2BEC1BD4BA9900559338 /* BeaconFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 148D2BE41BD4BA9900559338 /* BeaconFinder.m */; };
+		148D2BED1BD4BA9900559338 /* beacons.json in Resources */ = {isa = PBXBuildFile; fileRef = 148D2BE51BD4BA9900559338 /* beacons.json */; };
+		148D2BEF1BD4BA9900559338 /* iBeaconHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 148D2BE91BD4BA9900559338 /* iBeaconHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +83,13 @@
 		148BDAA61BC508D4007803B2 /* AttendanceCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendanceCollectionViewCell.swift; sourceTree = "<group>"; };
 		148BDAA71BC508D4007803B2 /* AttendanceCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttendanceCollectionViewCell.xib; sourceTree = "<group>"; };
 		148C1BAE1BC6511A00EEE9CF /* smarteee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smarteee.png; sourceTree = "<group>"; };
+		148D2BE21BD4BA9800559338 /* Smarte-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smarte-Bridging-Header.h"; sourceTree = "<group>"; };
+		148D2BE31BD4BA9900559338 /* BeaconFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeaconFinder.h; sourceTree = "<group>"; };
+		148D2BE41BD4BA9900559338 /* BeaconFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeaconFinder.m; sourceTree = "<group>"; };
+		148D2BE51BD4BA9900559338 /* beacons.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = beacons.json; sourceTree = "<group>"; };
+		148D2BE81BD4BA9900559338 /* iBeaconHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iBeaconHandler.h; sourceTree = "<group>"; };
+		148D2BE91BD4BA9900559338 /* iBeaconHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iBeaconHandler.m; sourceTree = "<group>"; };
+		148D2BF11BD4BC6C00559338 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +176,12 @@
 		1480B5861BC25E7F00AE417B /* Smarte */ = {
 			isa = PBXGroup;
 			children = (
+				148D2BE31BD4BA9900559338 /* BeaconFinder.h */,
+				148D2BE41BD4BA9900559338 /* BeaconFinder.m */,
+				148D2BE51BD4BA9900559338 /* beacons.json */,
+				148D2BF11BD4BC6C00559338 /* Constants.h */,
+				148D2BE81BD4BA9900559338 /* iBeaconHandler.h */,
+				148D2BE91BD4BA9900559338 /* iBeaconHandler.m */,
 				1469B7091BC387CF009AF14D /* Images */,
 				1480B5891BC25E7F00AE417B /* AppDelegate.swift */,
 				1469B7141BC3DAE0009AF14D /* View Controller  */,
@@ -176,6 +192,7 @@
 				1480B5951BC25E7F00AE417B /* LaunchScreen.xib */,
 				1480B58B1BC25E7F00AE417B /* Smarte.xcdatamodeld */,
 				1480B5871BC25E7F00AE417B /* Supporting Files */,
+				148D2BE21BD4BA9800559338 /* Smarte-Bridging-Header.h */,
 			);
 			path = Smarte;
 			sourceTree = "<group>";
@@ -325,6 +342,7 @@
 				148BDAA51BC502BB007803B2 /* DateCollectionViewCell.xib in Resources */,
 				1469B70D1BC3A07D009AF14D /* LoginViewController.xib in Resources */,
 				1480B5941BC25E7F00AE417B /* Images.xcassets in Resources */,
+				148D2BED1BD4BA9900559338 /* beacons.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,9 +365,11 @@
 				1480B58F1BC25E7F00AE417B /* ViewController.swift in Sources */,
 				148BDA9E1BC4F561007803B2 /* LoginPageViewController.swift in Sources */,
 				1480B58A1BC25E7F00AE417B /* AppDelegate.swift in Sources */,
+				148D2BEC1BD4BA9900559338 /* BeaconFinder.m in Sources */,
 				1480B58D1BC25E7F00AE417B /* Smarte.xcdatamodeld in Sources */,
 				148BDAA41BC502BB007803B2 /* DateCollectionViewCell.swift in Sources */,
 				148BDAA81BC508D4007803B2 /* AttendanceCollectionViewCell.swift in Sources */,
+				148D2BEF1BD4BA9900559338 /* iBeaconHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,10 +496,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Smarte/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Smarte/Smarte-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -487,10 +510,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Smarte/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Smarte/Smarte-Bridging-Header.h";
 			};
 			name = Release;
 		};

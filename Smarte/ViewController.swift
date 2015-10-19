@@ -46,6 +46,8 @@ class ViewController: UIViewController {
         view.alpha = 1
         
         super.viewWillAppear(animated)
+        
+        
     }
     
     func loadmyImage(){
@@ -60,6 +62,8 @@ class ViewController: UIViewController {
         //smartlbl.backgroundColor = UIColor.whiteColor()
         
         smartlbl.textColor = UIColor.whiteColor()
+        
+        
         
         
     }

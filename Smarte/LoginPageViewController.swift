@@ -15,6 +15,7 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
     
     
     
+    @IBOutlet weak var hiUserLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
     
@@ -62,12 +63,15 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
         
         super.viewDidLoad()
         
+      
+        
         
         
         configureDate()
         self.navigationController?.navigationBarHidden = true
         
         var nibName = UINib(nibName: "DateCollectionViewCell", bundle: nil)
+        
         
         self.DateCollectionView.registerNib(nibName, forCellWithReuseIdentifier: dateCellIdentifier)
         
@@ -93,6 +97,8 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
         
         let viewControllers: [UIViewController] = self.navigationController!.viewControllers as! [UIViewController];
         self.navigationController!.popToViewController(viewControllers[viewControllers.count - 2], animated: true);
+        
+        
 
     }
    
@@ -101,6 +107,8 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
         var TimeFormat = NSDateFormatter()
         
         TimeFormat.timeStyle = .MediumStyle
+        
+        
         
         
         
@@ -124,6 +132,8 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
         var TimeFormat = NSDateFormatter()
         
         TimeFormat.dateFormat = "dd-MM-YYYY"
+        
+    
     dateLbl.text = "\(TimeFormat.stringFromDate(dateFormat))"
     
     }
@@ -138,6 +148,8 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
         else {
             
             return 2 as Int
+            
+    
         }
         
         
