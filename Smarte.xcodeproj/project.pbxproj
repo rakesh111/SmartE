@@ -38,6 +38,7 @@
 		148D2BEC1BD4BA9900559338 /* BeaconFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 148D2BE41BD4BA9900559338 /* BeaconFinder.m */; };
 		148D2BED1BD4BA9900559338 /* beacons.json in Resources */ = {isa = PBXBuildFile; fileRef = 148D2BE51BD4BA9900559338 /* beacons.json */; };
 		148D2BEF1BD4BA9900559338 /* iBeaconHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 148D2BE91BD4BA9900559338 /* iBeaconHandler.m */; };
+		148D2BF81BD4EB9800559338 /* SmarteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148D2BF71BD4EB9800559338 /* SmarteModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		148D2BE81BD4BA9900559338 /* iBeaconHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iBeaconHandler.h; sourceTree = "<group>"; };
 		148D2BE91BD4BA9900559338 /* iBeaconHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iBeaconHandler.m; sourceTree = "<group>"; };
 		148D2BF11BD4BC6C00559338 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		148D2BF71BD4EB9800559338 /* SmarteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmarteModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			children = (
 				1469B70F1BC3D0EF009AF14D /* RegisterViewController.xib */,
 				1469B70E1BC3D0EF009AF14D /* RegisterViewController.swift */,
+				148D2BF71BD4EB9800559338 /* SmarteModel.swift */,
 				148C1BAD1BC6356000EEE9CF /* New Group */,
 			);
 			name = "Register View Controller";
@@ -366,6 +369,7 @@
 				148BDA9E1BC4F561007803B2 /* LoginPageViewController.swift in Sources */,
 				1480B58A1BC25E7F00AE417B /* AppDelegate.swift in Sources */,
 				148D2BEC1BD4BA9900559338 /* BeaconFinder.m in Sources */,
+				148D2BF81BD4EB9800559338 /* SmarteModel.swift in Sources */,
 				1480B58D1BC25E7F00AE417B /* Smarte.xcdatamodeld in Sources */,
 				148BDAA41BC502BB007803B2 /* DateCollectionViewCell.swift in Sources */,
 				148BDAA81BC508D4007803B2 /* AttendanceCollectionViewCell.swift in Sources */,

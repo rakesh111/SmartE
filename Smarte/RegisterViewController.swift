@@ -8,6 +8,20 @@
 
 import UIKit
 
+import CoreData
+
+let appdelegateObject = (UIApplication.sharedApplication().delegate as! AppDelegate)
+
+let managedContext = appdelegateObject.managedObjectContext!
+
+let entity =  NSEntityDescription.entityForName("SmarteModel",
+    inManagedObjectContext: managedContext)
+//let dataModel = NSManagedObject(entity: entity!,insertIntoManagedObjectContext:managedContext)
+var error: NSError?
+
+let fetchRequest = NSFetchRequest(entityName: "SmarteModel")
+
+
 class RegisterViewController: UIViewController,UITextFieldDelegate{
     
    
@@ -26,6 +40,8 @@ class RegisterViewController: UIViewController,UITextFieldDelegate{
     @IBOutlet weak var regLastNameTxtField: UITextField!
     @IBOutlet weak var regFirstNameTxtField: UITextField!
     @IBOutlet weak var regPassWordTxtField: UITextField!
+    
+    
 
     @IBOutlet weak var regButton: UIButton!
     
@@ -40,6 +56,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate{
     
     
         override func viewDidLoad() {
+            
             
                    
         self.navigationController?.navigationBarHidden = true
@@ -64,11 +81,54 @@ class RegisterViewController: UIViewController,UITextFieldDelegate{
     @IBAction func regButton(sender: AnyObject) {
         
         var regPushVC = LoginPageViewController()
-        
+        regPushVC.username = regEmailTxtField.text
+        regPushVC.pswd = regPassWordTxtField.text
+
         
         view.alpha=0;
         
         self.navigationController?.pushViewController(regPushVC, animated:true)
+        
+        
+        let appdelegateObject = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        
+        let managedContext = appdelegateObject.managedObjectContext!
+        let entity =  NSEntityDescription.entityForName("SmarteModel",
+            inManagedObjectContext: managedContext)
+        
+        
+        
+        let dataModel = NSManagedObject(entity: entity!,
+            
+            
+            
+            insertIntoManagedObjectContext:managedContext)
+        
+        
+        dataModel.setValue(regFirstNameTxtField.text, forKey: "firstName")
+        dataModel.setValue(regLastNameTxtField.text, forKey: "lastName")
+        dataModel.setValue(regEmailTxtField.text, forKey: "emailId")
+        dataModel.setValue(regPassWordTxtField.text, forKey: "password")
+
+        dataModel.setValue(regPhoneNoTxtField.text, forKey: "phoneNo")
+        
+        
+        
+
+        appdelegateObject.saveContext()
+        
+        
+      //var error: NSError?
+//        
+//        let fetchRequest = NSFetchRequest(entityName: "SmarteModel")
+//        
+//        var  result : [SmarteModel]? = managedContext.executeFetchRequest(fetchRequest, error: nil) as? [SmarteModel]
+        
+        
+        
+        
+        
+        
         
         
     }
@@ -115,6 +175,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate{
         return true
         
     }
+    
     
     
     

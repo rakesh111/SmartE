@@ -7,13 +7,16 @@
 //
 
 import UIKit
+import CoreData
 
 
 
 class LoginPageViewController: UIViewController,UICollectionViewDataSource{
   
-    
-    
+    var logUsername : NSString!
+    var logPassword : NSString!
+    var username : NSString!
+    var pswd : NSString!
     
     @IBOutlet weak var hiUserLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!
@@ -60,8 +63,19 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
 
     override func viewDidLoad() {
         
+        userDisplaylabel()
+        
+        
+        
+        
+        
+        
+        
         
         super.viewDidLoad()
+        
+        
+       
         
       
         
@@ -92,6 +106,50 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
 
     }
     
+    func userDisplaylabel(){
+        
+        var error: NSError?
+        
+        let fetchRequest = NSFetchRequest(entityName: "SmarteModel")
+        
+        fetchRequest.predicate = NSPredicate(format: "emailId like %@ && password like %@",username,pswd)
+        
+        
+        var  result : [SmarteModel]? = managedContext.executeFetchRequest(fetchRequest, error: nil) as? [SmarteModel]
+        
+        
+        
+        
+        var   arr   = NSMutableArray();
+        if let array = result {
+        
+        for currentPerson in array as [SmarteModel]  {
+            
+        
+            
+            arr .addObject(currentPerson)
+            
+            
+            println(arr)
+            
+        
+            
+            
+        }
+        
+
+        }
+        
+        
+       hiUserLbl.text = arr .objectAtIndex(0).valueForKey("firstName") as! String?
+        
+        
+        
+    }
+    
+    
+    
+    
     
     @IBAction func loginPageViewBackButton(sender: AnyObject) {
         
@@ -101,6 +159,12 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
         
 
     }
+    
+    
+    
+    
+    
+
    
     func timeLoop()
     {

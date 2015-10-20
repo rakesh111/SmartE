@@ -88,6 +88,8 @@ class ViewController: UIViewController {
         
         
           view.alpha=0;
+
+        
         
         self.navigationController?.pushViewController(logVC, animated: true)
     

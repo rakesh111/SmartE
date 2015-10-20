@@ -8,9 +8,11 @@
 
 import UIKit
 
+
 class LoginViewController: UIViewController,UITextFieldDelegate {
     
-   
+    var fname : NSString!
+    var pswd : NSString!
     
     init() {
         super.init(nibName : "LoginViewController", bundle:nil)
@@ -24,6 +26,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
 
     @IBOutlet weak var passwordTxtField: UITextField!
     
+
     
     override func viewWillAppear(animated: Bool) {
         
