@@ -80,6 +80,23 @@ class RegisterViewController: UIViewController,UITextFieldDelegate{
     
     @IBAction func regButton(sender: AnyObject) {
         
+        if((count(regFirstNameTxtField.text) == 0) &&
+        (count(regLastNameTxtField.text) == 0) &&
+        (count(regPassWordTxtField.text) == 0) &&
+        (count(regEmailTxtField.text) == 0) &&
+        (count(regPhoneNoTxtField.text) == 0)) {
+            
+            var alert = UIAlertController(title: "Error", message: "All fields are mandatory", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+            
+        }
+        
+        else{
+            
+        
+        
         var regPushVC = LoginPageViewController()
         
         regPushVC.logUsername = regEmailTxtField.text
@@ -118,6 +135,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate{
         
         
         
+    }
     }
     func configurePasswordTxtField(){
         

@@ -54,7 +54,15 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     
     @IBAction func loginPush(sender : AnyObject) {
         
-        
+        if ((count(usernameTxtField.text) == 0 ) && (count(passwordTxtField.text) == 0))
+        {
+            
+                var alert = UIAlertController(title: "Error", message: "All fields are mandatory", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+        }
+        else
+        {
         
        
         
@@ -91,6 +99,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
             
             
         }
+            
                 
         
         //var str = arr .objectAtIndex(0).valueForKey("firstName") as! String
@@ -117,17 +126,23 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
             var alert = UIAlertController(title: "Error", message: "Invalid Credentials", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
+            
+            
+           
         
            
             
             
             
         }
+        }
         
         
         
-    }
     
+    }
+
+
 
     
     

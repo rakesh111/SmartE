@@ -226,6 +226,9 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
             
             cella.datelbl.text = "Today"
             
+            
+            
+            
             return cella
             
             
