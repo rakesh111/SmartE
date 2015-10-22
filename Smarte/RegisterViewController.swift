@@ -81,13 +81,14 @@ class RegisterViewController: UIViewController,UITextFieldDelegate{
     @IBAction func regButton(sender: AnyObject) {
         
         var regPushVC = LoginPageViewController()
-        regPushVC.username = regEmailTxtField.text
-        regPushVC.pswd = regPassWordTxtField.text
+        
+        regPushVC.logUsername = regEmailTxtField.text
+        regPushVC.logPassword = regPassWordTxtField.text
 
         
         view.alpha=0;
         
-        self.navigationController?.pushViewController(regPushVC, animated:true)
+        
         
         
         let appdelegateObject = (UIApplication.sharedApplication().delegate as! AppDelegate)
@@ -98,11 +99,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate{
         
         
         
-        let dataModel = NSManagedObject(entity: entity!,
-            
-            
-            
-            insertIntoManagedObjectContext:managedContext)
+        let dataModel = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
         
         
         dataModel.setValue(regFirstNameTxtField.text, forKey: "firstName")
@@ -114,20 +111,10 @@ class RegisterViewController: UIViewController,UITextFieldDelegate{
         
         
         
+        
 
         appdelegateObject.saveContext()
-        
-        
-      //var error: NSError?
-//        
-//        let fetchRequest = NSFetchRequest(entityName: "SmarteModel")
-//        
-//        var  result : [SmarteModel]? = managedContext.executeFetchRequest(fetchRequest, error: nil) as? [SmarteModel]
-        
-        
-        
-        
-        
+        self.navigationController?.pushViewController(regPushVC, animated:true)
         
         
         
@@ -172,6 +159,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate{
         scrlView .setContentOffset(CGPointMake(0, 0), animated: true)
         
         
+    
         return true
         
     }

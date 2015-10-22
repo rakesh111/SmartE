@@ -8,11 +8,14 @@
 
 import UIKit
 
+import CoreData
 
 class LoginViewController: UIViewController,UITextFieldDelegate {
     
-    var fname : NSString!
-    var pswd : NSString!
+    var logUsername : NSString!
+    var logPassword : NSString!
+    
+    
     
     init() {
         super.init(nibName : "LoginViewController", bundle:nil)
@@ -26,61 +29,107 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
 
     @IBOutlet weak var passwordTxtField: UITextField!
     
-
-    
     override func viewWillAppear(animated: Bool) {
-        
-        view.alpha=1
-        
-        
-        
         
         super.viewWillAppear(animated)
         
-        
+        view.alpha=1
+    
     }
 
-    
-
-    
     @IBAction func logInBackButtonAction(sender: AnyObject) {
         
         let viewControllers: [UIViewController] = self.navigationController!.viewControllers as! [UIViewController];
-        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 2], animated: true);
-        
-        
-        
-        
+        self.navigationController!.popToViewController(viewControllers[viewControllers.count
+            - 2], animated: true);
+
     }
-    
-    
-    
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         let length = count(textField.text.utf16) + count(string.utf16)-range.length
         return length <= 15
+   
+
+    }
     
+    @IBAction func loginPush(sender : AnyObject) {
         
         
-
+        
+       
+        
+        logUsername = usernameTxtField.text
+        logPassword  = passwordTxtField.text
+        
+        var error: NSError?
+        
+        let fetchRequest = NSFetchRequest(entityName: "SmarteModel")
+        
+                
+        fetchRequest.predicate = NSPredicate(format: "emailId like %@ and password like %@",logUsername,logPassword)
+        
+        var  result : [SmarteModel]? = managedContext.executeFetchRequest(fetchRequest, error: nil) as? [SmarteModel]
+        
+        var   arr   = NSMutableArray();
+        if let array = result {
+            
+            for currentPerson in array as [SmarteModel]  {
+                
+                arr .addObject(currentPerson)
+                
+                println(arr.valueForKey("emailId"))
+                println(arr.valueForKey("password"))
+                println(arr.valueForKey("firstName"))
+                println(arr.valueForKey("lastName"))
+                println(arr.valueForKey("phoneNo"))
+                
+                
+                
+            }
+            
+           
+            
+            
+        }
+                
+        
+        //var str = arr .objectAtIndex(0).valueForKey("firstName") as! String
+        
+        if (arr.count>0) {
+            
+            var logPushVC = LoginPageViewController()
+            
+            
+            logPushVC.logUsername = usernameTxtField.text
+            logPushVC.logPassword = passwordTxtField.text
+            self.navigationController?.pushViewController(logPushVC, animated: true)
+            
+            
+            
+            
+            
+            view.alpha = 0
+            
+        }
+        
+        else
+        {
+            var alert = UIAlertController(title: "Error", message: "Invalid Credentials", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        
+           
+            
+            
+            
+        }
+        
+        
+        
     }
-    @IBAction func loginPush(sender : AnyObject)
-    {
-        
-        
-        var logPushVC = LoginPageViewController()
-        
-        
-        view.alpha=0;
-        
-               
-        
-        
-        self.navigationController?.pushViewController(logPushVC, animated: true)
+    
 
-        
-        
-    }
+    
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         
@@ -106,6 +155,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                 
         
     }
+    
+    
     
     func configureUsernameTxtField(){
         

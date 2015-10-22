@@ -45,11 +45,6 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
     }
 
     
-    
-    
-    
-    
-    
     init() {
         super.init(nibName : "LoginPageViewController", bundle:nil)
     }
@@ -112,7 +107,10 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
         
         let fetchRequest = NSFetchRequest(entityName: "SmarteModel")
         
-        fetchRequest.predicate = NSPredicate(format: "emailId like %@ && password like %@",username,pswd)
+        fetchRequest.predicate = NSPredicate(format: "emailId like %@ and password like %@",logUsername,logPassword)
+        
+        
+        
         
         
         var  result : [SmarteModel]? = managedContext.executeFetchRequest(fetchRequest, error: nil) as? [SmarteModel]
@@ -132,13 +130,8 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
             
             println(arr)
             
-        
-            
-            
         }
-        
-
-        }
+                   }
         
         
        hiUserLbl.text = arr .objectAtIndex(0).valueForKey("firstName") as! String?
@@ -199,6 +192,8 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
         
     
     dateLbl.text = "\(TimeFormat.stringFromDate(dateFormat))"
+        
+    
     
     }
     

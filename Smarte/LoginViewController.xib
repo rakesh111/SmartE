@@ -61,7 +61,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="loginPush:" destination="-1" eventType="touchUpInside" id="gcu-sm-RZU"/>
+                        <action selector="loginPush:" destination="-1" eventType="touchUpInside" id="ljb-v7-c4m"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bTc-b8-ofP">
