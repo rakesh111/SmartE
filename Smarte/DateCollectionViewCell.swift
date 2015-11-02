@@ -17,11 +17,7 @@ class DateCollectionViewCell: UICollectionViewCell {
         super.init(coder: aDecoder)
         
     }
-    
-    
-
-
-    override func awakeFromNib() {
+       override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }

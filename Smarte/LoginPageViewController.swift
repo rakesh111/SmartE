@@ -11,7 +11,7 @@ import CoreData
 
 
 
-class LoginPageViewController: UIViewController,UICollectionViewDataSource{
+class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate{
   
     var logUsername : NSString!
     var logPassword : NSString!
@@ -60,21 +60,7 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
         
         userDisplaylabel()
         
-        
-        
-        
-        
-        
-        
-        
         super.viewDidLoad()
-        
-        
-       
-        
-      
-        
-        
         
         configureDate()
         self.navigationController?.navigationBarHidden = true
@@ -89,16 +75,9 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
         
         
         self.attendanceCollectionView.registerNib(nibName1, forCellWithReuseIdentifier: dateCellIdentifier1)
-        
-        
-        
-       var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("timeLoop"), userInfo: nil, repeats: true)
+               var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("timeLoop"), userInfo: nil, repeats: true)
         
     
-        
-        
-        
-
     }
     
     func userDisplaylabel(){
@@ -108,17 +87,8 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
         let fetchRequest = NSFetchRequest(entityName: "SmarteModel")
         
         fetchRequest.predicate = NSPredicate(format: "emailId like %@ and password like %@",logUsername,logPassword)
-        
-        
-        
-        
-        
-        var  result : [SmarteModel]? = managedContext.executeFetchRequest(fetchRequest, error: nil) as? [SmarteModel]
-        
-        
-        
-        
-        var   arr   = NSMutableArray();
+              var  result : [SmarteModel]? = managedContext.executeFetchRequest(fetchRequest, error: nil) as? [SmarteModel]
+                var   arr   = NSMutableArray();
         if let array = result {
         
         for currentPerson in array as [SmarteModel]  {
@@ -139,12 +109,7 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
         
         
     }
-    
-    
-    
-    
-    
-    @IBAction func loginPageViewBackButton(sender: AnyObject) {
+        @IBAction func loginPageViewBackButton(sender: AnyObject) {
         
         let viewControllers: [UIViewController] = self.navigationController!.viewControllers as! [UIViewController];
         self.navigationController!.popToViewController(viewControllers[viewControllers.count - 2], animated: true);
@@ -154,23 +119,11 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
     }
     
     
-    
-    
-    
-
-   
     func timeLoop()
     {
         var TimeFormat = NSDateFormatter()
         
         TimeFormat.timeStyle = .MediumStyle
-        
-        
-        
-        
-        
-        
-        
         
         var timeString = "\(TimeFormat.stringFromDate(NSDate()))"
         
@@ -179,12 +132,9 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
     }
     
 
-    
     func configureDate(){
         
         var dateFormat = NSDate()
-        
-        
         
         var TimeFormat = NSDateFormatter()
         
@@ -192,10 +142,7 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
         
     
     dateLbl.text = "\(TimeFormat.stringFromDate(dateFormat))"
-        
-    
-    
-    }
+       }
     
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
@@ -207,12 +154,7 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
         else {
             
             return 2 as Int
-            
-    
         }
-        
-        
-        
         
     }
     
@@ -224,9 +166,28 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
           var cella = collectionView.dequeueReusableCellWithReuseIdentifier(dateCellIdentifier, forIndexPath: indexPath) as! DateCollectionViewCell
             
             
-            cella.datelbl.text = "Today"
+            var dateFormat = NSDate()
+            
+            var TimeFormat = NSDateFormatter()
+            
+            TimeFormat.dateFormat = "dd-MMM"
+            
+            if (indexPath.row == 0){
+                
+                cella.datelbl.text = "\(TimeFormat.stringFromDate(dateFormat))"
+            }
+            else if (indexPath.row == 1){
+                cella.datelbl.text = "\(TimeFormat.stringFromDate(dateFormat))"
+            }
+            
+            else if (indexPath.row == 2){
+                cella.datelbl.text = "\(TimeFormat.stringFromDate(dateFormat))"
+            }
             
             
+            
+            
+            //cella.datelbl.text = "\(TimeFormat.stringFromDate(dateFormat))"
             
             
             return cella
@@ -238,13 +199,21 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource{
             var cellb = collectionView.dequeueReusableCellWithReuseIdentifier(dateCellIdentifier1, forIndexPath: indexPath) as! AttendanceCollectionViewCell
             
             
-            cellb.attendlbl.text = "Today"
+            cellb.attendlbl.text = ""
             
             return cellb
             
         }
         
+     
     }
+    
+    
+        
+        
+    }
+    
+    
 
     
-}
+

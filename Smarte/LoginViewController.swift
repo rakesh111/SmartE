@@ -63,6 +63,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         }
         else
         {
+            
         
        
         
@@ -90,14 +91,9 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                 println(arr.valueForKey("firstName"))
                 println(arr.valueForKey("lastName"))
                 println(arr.valueForKey("phoneNo"))
-                
-                
-                
+              
             }
-            
-           
-            
-            
+          
         }
             
                 
@@ -105,6 +101,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         //var str = arr .objectAtIndex(0).valueForKey("firstName") as! String
         
         if (arr.count>0) {
+            
             
             var logPushVC = LoginPageViewController()
             
@@ -126,14 +123,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
             var alert = UIAlertController(title: "Error", message: "Invalid Credentials", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
-            
-            
-           
-        
-           
-            
-            
-            
+          
         }
         }
         
@@ -141,17 +131,10 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         
     
     }
-
-
-
-    
-    
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         
     view.endEditing(true)
-        
-        
-        
+    
     }
     
     
@@ -160,15 +143,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         //passwordTxtField = UITextField()
         
         passwordTxtField.secureTextEntry = true
-        
-        
-        
-        passwordTxtField.delegate = self
-        
-        
-        
-                
-        
+                passwordTxtField.delegate = self
+       
     }
     
     
@@ -177,25 +153,12 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         
         usernameTxtField.delegate = self
     }
-    
-    
-    
-    
-    
-    
-
-    override func viewDidLoad() {
+        override func viewDidLoad() {
         super.viewDidLoad()
         
         configurePasswordTxtField()
         
         configureUsernameTxtField()
-        
-    
-        
-        
-        
-
-    }
+         }
 
 }

@@ -62,10 +62,7 @@ class ViewController: UIViewController {
         //smartlbl.backgroundColor = UIColor.whiteColor()
         
         smartlbl.textColor = UIColor.whiteColor()
-        
-        
-        
-        
+      
     }
     
     @IBAction func registerAction(sender: AnyObject) {
@@ -84,26 +81,15 @@ class ViewController: UIViewController {
     @IBAction func loginAction(sender: AnyObject) {
         
         var logVC = LoginViewController()
-        
-        
-        
-          view.alpha=0;
+                  view.alpha=0;
 
         
         
         self.navigationController?.pushViewController(logVC, animated: true)
     
     }
-    
-    
-    
-    
-
-    override func didReceiveMemoryWarning() {
+       override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-
-}
+  }

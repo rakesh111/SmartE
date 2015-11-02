@@ -52,9 +52,6 @@ class RegisterViewController: UIViewController,UITextFieldDelegate{
         super.viewWillAppear(animated)
     }
 
-    
-    
-    
         override func viewDidLoad() {
             
             
@@ -63,8 +60,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate{
             
             configureTextFieldDelegate()
             
-        
-            
+         
             
         super.viewDidLoad()
             
@@ -125,12 +121,8 @@ class RegisterViewController: UIViewController,UITextFieldDelegate{
         dataModel.setValue(regPassWordTxtField.text, forKey: "password")
 
         dataModel.setValue(regPhoneNoTxtField.text, forKey: "phoneNo")
-        
-        
-        
-        
-
-        appdelegateObject.saveContext()
+            
+               appdelegateObject.saveContext()
         self.navigationController?.pushViewController(regPushVC, animated:true)
         
         
@@ -168,13 +160,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate{
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         
         textField.resignFirstResponder()
-        
-        
-        
-        
-        
-    
-        scrlView .setContentOffset(CGPointMake(0, 0), animated: true)
+               scrlView .setContentOffset(CGPointMake(0, 0), animated: true)
         
         
     
@@ -182,11 +168,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate{
         
     }
     
-    
-    
-    
-    
-    @IBAction func registerBack(sender: AnyObject) {
+      @IBAction func registerBack(sender: AnyObject) {
         
         let viewControllers: [UIViewController] = self.navigationController!.viewControllers as! [UIViewController];
         self.navigationController!.popToViewController(viewControllers[viewControllers.count - 2], animated: true);
@@ -201,10 +183,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate{
         return length <= 20
         
     }
-    
-
-
-    override func didReceiveMemoryWarning() {
+     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
     }
