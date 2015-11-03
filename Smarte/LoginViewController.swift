@@ -33,7 +33,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         
         super.viewWillAppear(animated)
         
-        view.alpha=1
+        view.alpha = 1
     
     }
 
@@ -64,10 +64,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         else
         {
             
-        
-       
-        
-        logUsername = usernameTxtField.text
+             logUsername = usernameTxtField.text
         logPassword  = passwordTxtField.text
         
         var error: NSError?
@@ -95,10 +92,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
             }
           
         }
-            
-                
-        
-        //var str = arr .objectAtIndex(0).valueForKey("firstName") as! String
+       
+            //var str = arr .objectAtIndex(0).valueForKey("firstName") as! String
         
         if (arr.count>0) {
             
@@ -109,10 +104,6 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
             logPushVC.logUsername = usernameTxtField.text
             logPushVC.logPassword = passwordTxtField.text
             self.navigationController?.pushViewController(logPushVC, animated: true)
-            
-            
-            
-            
             
             view.alpha = 0
             
@@ -127,9 +118,6 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         }
         }
         
-        
-        
-    
     }
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         

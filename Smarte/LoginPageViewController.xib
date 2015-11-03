@@ -10,7 +10,7 @@
             <connections>
                 <outlet property="DateCollectionView" destination="eje-EC-Uhz" id="Ao3-tp-221"/>
                 <outlet property="attendanceCollectionView" destination="X42-aQ-Gvx" id="yuw-2R-gKw"/>
-                <outlet property="dateLbl" destination="sbb-P6-3LF" id="cve-mr-nyX"/>
+                <outlet property="dateLbl" destination="sbb-P6-3LF" id="v51-z7-bfT"/>
                 <outlet property="hiUserLbl" destination="oCN-DR-IAd" id="SDd-gG-ybS"/>
                 <outlet property="timeLbl" destination="OUq-fI-g9d" id="kMt-QN-fsM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

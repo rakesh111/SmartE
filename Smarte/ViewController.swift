@@ -15,9 +15,7 @@ class ViewController: UIViewController {
    
     @IBOutlet weak var smartlbl: UILabel!
     
-    
-    
-    init() {
+        init() {
         super.init(nibName : "ViewController", bundle:nil)
     }
     
@@ -38,10 +36,7 @@ class ViewController: UIViewController {
         
         
             }
-    
-
-    
-    override func viewWillAppear(animated: Bool) {
+       override func viewWillAppear(animated: Bool) {
         
         view.alpha = 1
         
@@ -76,15 +71,10 @@ class ViewController: UIViewController {
         
         
     }
-        
-    
-    @IBAction func loginAction(sender: AnyObject) {
+        @IBAction func loginAction(sender: AnyObject) {
         
         var logVC = LoginViewController()
                   view.alpha=0;
-
-        
-        
         self.navigationController?.pushViewController(logVC, animated: true)
     
     }

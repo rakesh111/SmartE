@@ -18,6 +18,7 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
     var username : NSString!
     var pswd : NSString!
     
+    
     var dateArr : NSMutableArray!
     
     @IBOutlet weak var hiUserLbl: UILabel!
@@ -25,7 +26,10 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
     @IBOutlet weak var dateLbl: UILabel!
     
     
+    
     @IBOutlet weak var attendanceCollectionView: UICollectionView!
+    
+    
     
     @IBOutlet weak var DateCollectionView: UICollectionView!
     
@@ -62,6 +66,10 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
         
         userDisplaylabel()
         
+        configureDisDate()
+        
+        
+        
         super.viewDidLoad()
         
         let cal = NSCalendar.currentCalendar()
@@ -70,26 +78,28 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
         
         dateArr = NSMutableArray()
         
+        
         var TimeFormat = NSDateFormatter()
         
         TimeFormat.dateFormat = "dd-MMM-YYYY"
+        
+        dateArr.addObject("\(TimeFormat.stringFromDate(currdate))")
 
-        dateArr .addObject("\(TimeFormat.stringFromDate(currdate))")
         
-        
-        for i in 1 ... 2{
-            
+        for i in 1 ... 3{
             
             currdate = cal.dateByAddingUnit(.DayCalendarUnit, value: -1, toDate: currdate, options:
                 nil)!
             
             
             
-             dateArr .addObject("\(TimeFormat.stringFromDate(currdate))")
             
-        }
+             dateArr.addObject("\(TimeFormat.stringFromDate(currdate))")
+            
         
-              //configureDate()
+        
+        }
+    
         
         
         self.navigationController?.navigationBarHidden = true
@@ -104,10 +114,25 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
         
         
         self.attendanceCollectionView.registerNib(nibName1, forCellWithReuseIdentifier: dateCellIdentifier1)
+        
                var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("timeLoop"), userInfo: nil, repeats: true)
         
     
     }
+    
+    func configureDisDate(){
+        
+        
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.timeStyle = .MediumStyle
+        
+        dateFormatter.dateFormat = "dd-MMM-YYYY"
+        
+        var dateString = "\(dateFormatter.stringFromDate(NSDate()))"
+        
+        dateLbl.text = "\(dateString)"
+    }
+
     
     func userDisplaylabel(){
         
@@ -160,11 +185,6 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
 
     }
     
-
-    func configureDate(){
-        
-        
-       }
     
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
@@ -188,8 +208,9 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
           var cella = collectionView.dequeueReusableCellWithReuseIdentifier(dateCellIdentifier, forIndexPath: indexPath) as! DateCollectionViewCell
             
             
-    
-    cella.datelbl.text = dateArr.objectAtIndex(indexPath.row) as! String
+           
+            
+            cella.datelbl.text = dateArr.objectAtIndex(indexPath.row) as! String
             
             
             
