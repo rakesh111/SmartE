@@ -18,6 +18,8 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
     var username : NSString!
     var pswd : NSString!
     
+    var dateArr : NSMutableArray!
+    
     @IBOutlet weak var hiUserLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
@@ -62,7 +64,34 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
         
         super.viewDidLoad()
         
-        configureDate()
+        let cal = NSCalendar.currentCalendar()
+        
+        var currdate = NSDate()
+        
+        dateArr = NSMutableArray()
+        
+        var TimeFormat = NSDateFormatter()
+        
+        TimeFormat.dateFormat = "dd-MMM-YYYY"
+
+        dateArr .addObject("\(TimeFormat.stringFromDate(currdate))")
+        
+        
+        for i in 1 ... 2{
+            
+            
+            currdate = cal.dateByAddingUnit(.DayCalendarUnit, value: -1, toDate: currdate, options:
+                nil)!
+            
+            
+            
+             dateArr .addObject("\(TimeFormat.stringFromDate(currdate))")
+            
+        }
+        
+              //configureDate()
+        
+        
         self.navigationController?.navigationBarHidden = true
         
         var nibName = UINib(nibName: "DateCollectionViewCell", bundle: nil)
@@ -134,21 +163,14 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
 
     func configureDate(){
         
-        var dateFormat = NSDate()
         
-        var TimeFormat = NSDateFormatter()
-        
-        TimeFormat.dateFormat = "dd-MM-YYYY"
-        
-    
-    dateLbl.text = "\(TimeFormat.stringFromDate(dateFormat))"
        }
     
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         
         if(collectionView == self.DateCollectionView ){
-            return 4 as Int
+            return dateArr.count as Int
         }
         
         else {
@@ -166,24 +188,8 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
           var cella = collectionView.dequeueReusableCellWithReuseIdentifier(dateCellIdentifier, forIndexPath: indexPath) as! DateCollectionViewCell
             
             
-            var dateFormat = NSDate()
-            
-            var TimeFormat = NSDateFormatter()
-            
-            TimeFormat.dateFormat = "dd-MMM"
-            
-            if (indexPath.row == 0){
-                
-                cella.datelbl.text = "\(TimeFormat.stringFromDate(dateFormat))"
-            }
-            else if (indexPath.row == 1){
-                cella.datelbl.text = "\(TimeFormat.stringFromDate(dateFormat))"
-            }
-            
-            else if (indexPath.row == 2){
-                cella.datelbl.text = "\(TimeFormat.stringFromDate(dateFormat))"
-            }
-            
+    
+    cella.datelbl.text = dateArr.objectAtIndex(indexPath.row) as! String
             
             
             
