@@ -32,7 +32,7 @@
             <connections>
                 <outlet property="datelbl" destination="eie-KE-mHa" id="cck-bU-9Kg"/>
             </connections>
-            <point key="canvasLocation" x="433" y="422"/>
+            <point key="canvasLocation" x="583" y="403"/>
         </collectionViewCell>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

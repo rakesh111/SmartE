@@ -91,14 +91,9 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
             currdate = cal.dateByAddingUnit(.DayCalendarUnit, value: -1, toDate: currdate, options:
                 nil)!
             
-            
-            
-            
              dateArr.addObject("\(TimeFormat.stringFromDate(currdate))")
             
-        
-        
-        }
+                  }
     
         
         
@@ -195,7 +190,7 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
         
         else {
             
-            return 2 as Int
+            return 4 as Int
         }
         
     }
@@ -226,7 +221,30 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
             var cellb = collectionView.dequeueReusableCellWithReuseIdentifier(dateCellIdentifier1, forIndexPath: indexPath) as! AttendanceCollectionViewCell
             
             
-            cellb.attendlbl.text = ""
+            if(indexPath.row == 0){
+                
+                cellb.checkInlbl.text = "Check In"
+                cellb.checkOutlbl.text = "Check Out"
+                
+            }
+            
+            else if (indexPath.row == 1){
+                
+                cellb.checkInlbl.text = ""
+                cellb.checkOutlbl.text = ""
+                
+                
+            }
+            else if (indexPath.row == 2)
+            {
+                cellb.checkInlbl.text = ""
+                cellb.checkOutlbl.text = ""
+            }
+            
+            else {
+                cellb.checkInlbl.text = ""
+                cellb.checkOutlbl.text = ""
+            }
             
             return cellb
             

@@ -10,7 +10,8 @@ import UIKit
 
 class AttendanceCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var attendlbl: UILabel!
+    @IBOutlet weak var checkInlbl: UILabel!
+    @IBOutlet weak var checkOutlbl: UILabel!
     
     required init(coder aDecoder: NSCoder)
     {
