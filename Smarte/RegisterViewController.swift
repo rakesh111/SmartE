@@ -22,7 +22,9 @@ var error: NSError?
 let fetchRequest = NSFetchRequest(entityName: "SmarteModel")
 
 
-class RegisterViewController: UIViewController,UITextFieldDelegate{
+class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnectionDataDelegate{
+    
+    var myrespData : NSMutableData!
     
    
     
@@ -60,9 +62,12 @@ class RegisterViewController: UIViewController,UITextFieldDelegate{
             
             configureTextFieldDelegate()
             
+            //setRequest()
+            
          
             
         super.viewDidLoad()
+            
             
             configurePasswordTxtField()
             
@@ -175,6 +180,65 @@ class RegisterViewController: UIViewController,UITextFieldDelegate{
         
         
     }
+    
+    
+    func setRequest(){
+        
+        var urlString = "192.168.1.167:8090/Attendance/register"
+        
+        var url = NSURL(string: urlString)
+        
+        var theRequest = NSMutableURLRequest(URL: url!)
+        
+        theRequest.HTTPMethod = "POST"
+        
+    
+        theRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        //var dict = NSDictionary(objectsAndKeys: regFirstNameTxtField.text,"firstName",regLastNameTxtField.text,"lastName", regEmailTxtField.text,"emailId",regPassWordTxtField.text,"password", regPhoneNoTxtField.text,"phoneNo")
+        
+        var bod = "firstName=\(regFirstNameTxtField.text)&lastName=\(regLastNameTxtField.text)emailId=\(regEmailTxtField.text)password=\(regPassWordTxtField.text)phoneNo=\(regPhoneNoTxtField.text)"
+        
+        //var dats = NSJSONSerialization.dataWithJSONObject(dict, options: 0, error: nil)
+        
+        
+        theRequest.HTTPBody = bod.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+        
+        var connectRequest  = NSURLConnection(request: theRequest, delegate: self)
+        
+        
+        
+        
+    }
+    
+    func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
+        NSLog("received response\(response)")
+        
+        myrespData = NSMutableData()
+    }
+    
+    
+    func connection(connection: NSURLConnection, didReceiveData data: NSData) {
+        
+        myrespData.appendData(data)
+        
+        
+        
+    }
+    
+    func connectionDidFinishLoading(connection: NSURLConnection) {
+        
+        NSLog("\(myrespData)")
+        
+        let myResponseData: NSDictionary! = NSJSONSerialization.JSONObjectWithData(myrespData, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSDictionary
+        
+    }
+    
+    func connection(connection: NSURLConnection, didFailWithError error: NSError) {
+        NSLog("\(myrespData)")
+    }
+    
+    
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         

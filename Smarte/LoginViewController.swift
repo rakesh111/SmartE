@@ -111,7 +111,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         
         else
         {
-            var alert = UIAlertController(title: "Error", message: "Invalid Credentials", preferredStyle: UIAlertControllerStyle.Alert)
+            var alert = UIAlertController(title: "Invalid Credentials!", message: " Please register to log in", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
           
