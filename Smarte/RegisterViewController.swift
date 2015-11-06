@@ -22,9 +22,13 @@ var error: NSError?
 let fetchRequest = NSFetchRequest(entityName: "SmarteModel")
 
 
+
+
 class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnectionDataDelegate{
     
     var myrespData : NSMutableData!
+    
+    
     
    
     
@@ -37,6 +41,8 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
     }
 
     @IBOutlet weak var scrlView: UIScrollView!
+    
+    
     @IBOutlet weak var regPhoneNoTxtField: UITextField!
     @IBOutlet weak var regEmailTxtField: UITextField!
     @IBOutlet weak var regLastNameTxtField: UITextField!
@@ -62,12 +68,8 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
             
             configureTextFieldDelegate()
             
-            //setRequest()
-            
-         
-            
         super.viewDidLoad()
-            
+        
             
             configurePasswordTxtField()
             
@@ -75,8 +77,6 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
             
             scrlView.contentSize = CGSizeMake(UIScreen .mainScreen().bounds.size.width, (regButton.frame.size.height + regButton.frame.origin.y)+15)
             
-
-     
     }
     
     @IBAction func regButton(sender: AnyObject) {
@@ -96,39 +96,11 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
         
         else{
             
-        
-        
-        var regPushVC = LoginPageViewController()
-        
-        regPushVC.logUsername = regEmailTxtField.text
-        regPushVC.logPassword = regPassWordTxtField.text
-
-        
-        view.alpha=0;
-        
-        
-        
-        
-        let appdelegateObject = (UIApplication.sharedApplication().delegate as! AppDelegate)
-        
-        let managedContext = appdelegateObject.managedObjectContext!
-        let entity =  NSEntityDescription.entityForName("SmarteModel",
-            inManagedObjectContext: managedContext)
-        
-        
-        
-        let dataModel = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
-        
-        
-        dataModel.setValue(regFirstNameTxtField.text, forKey: "firstName")
-        dataModel.setValue(regLastNameTxtField.text, forKey: "lastName")
-        dataModel.setValue(regEmailTxtField.text, forKey: "emailId")
-        dataModel.setValue(regPassWordTxtField.text, forKey: "password")
-
-        dataModel.setValue(regPhoneNoTxtField.text, forKey: "phoneNo")
+             setRequest()
             
-               appdelegateObject.saveContext()
-        self.navigationController?.pushViewController(regPushVC, animated:true)
+        
+        
+            
         
         
         
@@ -141,6 +113,8 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
         regPassWordTxtField.delegate = self
         
     }
+    
+    
     @IBAction func tapped(sender: AnyObject) {
         
         scrlView.endEditing(true)
@@ -182,32 +156,39 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
     }
     
     
+    
     func setRequest(){
         
-        var urlString = "192.168.1.167:8090/Attendance/register"
+        var urlString = "http://192.168.1.167:8080/Attendance/register"
         
         var url = NSURL(string: urlString)
         
         var theRequest = NSMutableURLRequest(URL: url!)
         
         theRequest.HTTPMethod = "POST"
+
+        
+        var parameters = ["firsrtName": regFirstNameTxtField.text, "lastName": regLastNameTxtField.text,"email": regEmailTxtField.text,"password": regPassWordTxtField.text,"phone": regPhoneNoTxtField.text] as Dictionary<String, String>
         
     
-        theRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        //var dict = NSDictionary(objectsAndKeys: regFirstNameTxtField.text,"firstName",regLastNameTxtField.text,"lastName", regEmailTxtField.text,"emailId",regPassWordTxtField.text,"password", regPhoneNoTxtField.text,"phoneNo")
+        var err: NSError?
         
-        var bod = "firstName=\(regFirstNameTxtField.text)&lastName=\(regLastNameTxtField.text)emailId=\(regEmailTxtField.text)password=\(regPassWordTxtField.text)phoneNo=\(regPhoneNoTxtField.text)"
+        theRequest.HTTPBody = NSJSONSerialization.dataWithJSONObject(parameters, options: nil, error: &err) // pass dictionary to nsdata object and set it as request body
+        
+        theRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        theRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+
         
         //var dats = NSJSONSerialization.dataWithJSONObject(dict, options: 0, error: nil)
         
         
-        theRequest.HTTPBody = bod.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+        //theRequest.HTTPBody = dats
+        
+        
+       //NSLog("\(bod.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true))" )
         
         var connectRequest  = NSURLConnection(request: theRequest, delegate: self)
-        
-        
-        
         
     }
     
@@ -221,22 +202,70 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
     func connection(connection: NSURLConnection, didReceiveData data: NSData) {
         
         myrespData.appendData(data)
-        
-        
-        
+       
     }
     
     func connectionDidFinishLoading(connection: NSURLConnection) {
         
         NSLog("\(myrespData)")
         
-        let myResponseData: NSDictionary! = NSJSONSerialization.JSONObjectWithData(myrespData, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSDictionary
+        var strData = NSString(data: myrespData, encoding: NSUTF8StringEncoding)
+        println("Body: \(strData)")
+        var err: NSError?
+        var myResponseData = NSJSONSerialization.JSONObjectWithData(myrespData, options: .MutableLeaves, error: &err) as? NSDictionary
+        
+        //let myResponseData: NSDictionary! = NSJSONSerialization.JSONObjectWithData(myrespData, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSDictionary
+        
+        var regPushVC = LoginPageViewController()
+        
+        
+        
+        regPushVC.logUsername = regEmailTxtField.text
+        regPushVC.logPassword = regPassWordTxtField.text
+        
+        
+        view.alpha=0;
+        
+        
+        
+        
+        let appdelegateObject = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        
+        let managedContext = appdelegateObject.managedObjectContext!
+        
+        
+        let entity =  NSEntityDescription.entityForName("SmarteModel",
+            inManagedObjectContext: managedContext)
+        
+        
+        
+        let dataModel = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
+        
+        
+        dataModel.setValue(regFirstNameTxtField.text, forKey: "firstName")
+        dataModel.setValue(regLastNameTxtField.text, forKey: "lastName")
+        dataModel.setValue(regEmailTxtField.text, forKey: "emailId")
+        dataModel.setValue(regPassWordTxtField.text, forKey: "password")
+        
+        dataModel.setValue(regPhoneNoTxtField.text, forKey: "phoneNo")
+        
+        appdelegateObject.saveContext()
+        self.navigationController?.pushViewController(regPushVC, animated:true)
+
         
     }
     
     func connection(connection: NSURLConnection, didFailWithError error: NSError) {
-        NSLog("\(myrespData)")
+        
+        
+        
+        
+        NSLog("\(error)")
     }
+    
+    
+
+
     
     
     
@@ -245,6 +274,8 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
         let length = count(textField.text.utf16) + count(string.utf16) - range.length
         
         return length <= 20
+        
+        
         
     }
      override func didReceiveMemoryWarning() {

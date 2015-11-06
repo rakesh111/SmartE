@@ -19,6 +19,7 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
     var pswd : NSString!
     
     
+    
     var dateArr : NSMutableArray!
     
     @IBOutlet weak var hiUserLbl: UILabel!
@@ -105,6 +106,9 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
         self.DateCollectionView.registerNib(nibName, forCellWithReuseIdentifier: dateCellIdentifier)
         
         var nibName1 = UINib(nibName: "AttendanceCollectionViewCell", bundle: nil)
+        
+        
+        //var nibName2 = UINib(nibName: "AttendanceCollectionViewCell", bundle: nil)
         
         
         
