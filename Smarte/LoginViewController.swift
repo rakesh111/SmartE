@@ -10,10 +10,12 @@ import UIKit
 
 import CoreData
 
-class LoginViewController: UIViewController,UITextFieldDelegate {
+class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionDataDelegate {
     
     var logUsername : NSString!
     var logPassword : NSString!
+    
+    var logRespData:NSMutableData!
     
     
     
@@ -63,59 +65,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         }
         else
         {
+            logSetRequest()
             
-             logUsername = usernameTxtField.text
-        logPassword  = passwordTxtField.text
-        
-        var error: NSError?
-        
-        let fetchRequest = NSFetchRequest(entityName: "SmarteModel")
-        
-                
-        fetchRequest.predicate = NSPredicate(format: "emailId like %@ and password like %@",logUsername,logPassword)
-        
-        var  result : [SmarteModel]? = managedContext.executeFetchRequest(fetchRequest, error: nil) as? [SmarteModel]
-        
-        var   arr   = NSMutableArray();
-        if let array = result {
-            
-            for currentPerson in array as [SmarteModel]  {
-                
-                arr .addObject(currentPerson)
-                
-                println(arr.valueForKey("emailId"))
-                println(arr.valueForKey("password"))
-                println(arr.valueForKey("firstName"))
-                println(arr.valueForKey("lastName"))
-                println(arr.valueForKey("phoneNo"))
-              
-            }
-          
-        }
-       
-            //var str = arr .objectAtIndex(0).valueForKey("firstName") as! String
-        
-        if (arr.count>0) {
-            
-            
-            var logPushVC = LoginPageViewController()
-            
-            
-            logPushVC.logUsername = usernameTxtField.text
-            logPushVC.logPassword = passwordTxtField.text
-            self.navigationController?.pushViewController(logPushVC, animated: true)
-            
-            view.alpha = 0
-            
-        }
-        
-        else
-        {
-            var alert = UIAlertController(title: "Invalid Credentials!", message: " Please register to log in", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
-          
-        }
         }
         
     }
@@ -134,6 +85,132 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
                 passwordTxtField.delegate = self
        
     }
+    
+    func logSetRequest(){
+        
+        var urlString = "http://192.168.1.167:8080/Attendance/register"
+        
+        var url = NSURL(string: urlString)
+        
+        var theRequest = NSMutableURLRequest(URL: url!)
+        
+        theRequest.HTTPMethod = "POST"
+        
+        
+        var parameters = [ "email": usernameTxtField.text,"password": passwordTxtField.text] as Dictionary<String, String>
+        
+        
+        
+        var err: NSError?
+        
+        theRequest.HTTPBody = NSJSONSerialization.dataWithJSONObject(parameters, options: nil, error: &err) // pass dictionary to nsdata object and set it as request body
+        
+        theRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        theRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        
+        
+        var connectRequest  = NSURLConnection(request: theRequest, delegate: self)
+        
+    }
+    
+    func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
+        
+        NSLog("received response\(response)")
+        
+        logRespData = NSMutableData()
+        
+        
+    
+    }
+    
+    func connection(connection: NSURLConnection, didReceiveData data: NSData) {
+        
+        logRespData.appendData(data)
+    }
+    
+    func connectionDidFinishLoading(connection: NSURLConnection) {
+        
+        NSLog("\(logRespData)")
+        
+        var strData = NSString(data: logRespData, encoding: NSUTF8StringEncoding)
+        println("Body: \(strData)")
+        var err: NSError?
+        var myResponseData = NSJSONSerialization.JSONObjectWithData(logRespData, options: .MutableLeaves, error: &err) as? NSDictionary
+        
+        
+        logUsername = usernameTxtField.text
+        logPassword  = passwordTxtField.text
+        
+        var error: NSError?
+        
+        let fetchRequest = NSFetchRequest(entityName: "SmarteModel")
+        
+        
+        fetchRequest.predicate = NSPredicate(format: "emailId like %@ and password like %@",logUsername,logPassword)
+        
+        var  result : [SmarteModel]? = managedContext.executeFetchRequest(fetchRequest, error: nil) as? [SmarteModel]
+        
+        var   arr   = NSMutableArray();
+        if let array = result {
+            
+            for currentPerson in array as [SmarteModel]  {
+                
+                arr .addObject(currentPerson)
+                
+                println(arr.valueForKey("emailId"))
+                println(arr.valueForKey("password"))
+                println(arr.valueForKey("firstName"))
+                println(arr.valueForKey("lastName"))
+                println(arr.valueForKey("phoneNo"))
+                
+            }
+            
+        }
+        
+        //var str = arr .objectAtIndex(0).valueForKey("firstName") as! String
+        
+        if (arr.count>0) {
+            
+            
+            var logPushVC = LoginPageViewController()
+            
+            
+            logPushVC.logUsername = usernameTxtField.text
+            logPushVC.logPassword = passwordTxtField.text
+            self.navigationController?.pushViewController(logPushVC, animated: true)
+            
+            view.alpha = 0
+            
+        }
+            
+        else
+        {
+            var alert = UIAlertController(title: "Invalid Credentials!", message: " Please register to log in", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        }
+
+        
+        
+        
+    }
+    
+    func connection(connection: NSURLConnection, didFailWithError error: NSError) {
+        
+        NSLog("\(error)")
+    }
+    
+    
+    
+    
+
+        
+        
+        
+        
+    
     
     
     
