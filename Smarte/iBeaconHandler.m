@@ -115,6 +115,7 @@ static iBeaconHandler* sharedHandler;
         [consolidatedFoundBeacons removeAllObjects];
     }
     
+    
     for (int i = 0; i < [[trackedBeacons allKeys] count]; i++)
     {
         NSString *key = [[trackedBeacons allKeys] objectAtIndex:i];
@@ -128,6 +129,8 @@ static iBeaconHandler* sharedHandler;
     {
         [self.delegate performSelector:@selector(didFoundBeacons:) withObject:consolidatedFoundBeacons];
     }
+    
+    
 }
 
 #pragma mark -

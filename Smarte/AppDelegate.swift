@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+import CoreLocation
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -66,9 +68,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.makeKeyAndVisible()
         
+        let uuidString = "EBEFD083-70A2-47C8-9837-E7B5634DF524"
+        
+        let beaconIdentifier = "iBeaconModules.us"
+        
+        let beaconUUID : NSUUID = NSUUID(UUIDString: uuidString)!
+        
+        let beaconRegion : CLBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, identifier: beaconIdentifier)
+
+        
         // Override point for customization after application launch.
         return true
-
+        
+        
         // Override point for customization after application launch.
         
     }

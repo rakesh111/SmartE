@@ -45,13 +45,6 @@ class ViewController: UIViewController {
         
     }
     
-    func loadmyImage(){
-        
-        //var image = UIImage(named: ("Shade-BG.png"))
-        //self.myImage.image = image as UIImage!
-
-    }
-    
     func configureiblbl(){
         
         //smartlbl.backgroundColor = UIColor.whiteColor()

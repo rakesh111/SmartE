@@ -10,13 +10,13 @@ import UIKit
 
 import CoreData
 
+
 let appdelegateObject = (UIApplication.sharedApplication().delegate as! AppDelegate)
 
 let managedContext = appdelegateObject.managedObjectContext!
 
 let entity =  NSEntityDescription.entityForName("SmarteModel",
     inManagedObjectContext: managedContext)
-//let dataModel = NSManagedObject(entity: entity!,insertIntoManagedObjectContext:managedContext)
 var error: NSError?
 
 let fetchRequest = NSFetchRequest(entityName: "SmarteModel")
@@ -27,10 +27,6 @@ let fetchRequest = NSFetchRequest(entityName: "SmarteModel")
 class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnectionDataDelegate{
     
     var myrespData : NSMutableData!
-    
-    
-    
-   
     
     init() {
         super.init(nibName : "RegisterViewController", bundle:nil)
@@ -94,23 +90,18 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
             
         }
         
-        else{
+        else {
             
              setRequest()
-            
-        
-        
-            
-        
-        
-        
-    }
+        }
     }
     func configurePasswordTxtField(){
         
         regPassWordTxtField.secureTextEntry = true
         
         regPassWordTxtField.delegate = self
+        
+        
         
     }
     
@@ -124,6 +115,9 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
     func configureTextFieldDelegate(){
         regFirstNameTxtField.delegate = self
         regLastNameTxtField.delegate = self
+        
+        
+        
         
         regEmailTxtField.delegate = self
         regPhoneNoTxtField.delegate = self
@@ -141,9 +135,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
         textField.resignFirstResponder()
                scrlView .setContentOffset(CGPointMake(0, 0), animated: true)
         
-        
-    
-        return true
+                return true
         
     }
     
@@ -154,8 +146,6 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
         
         
     }
-    
-    
     
     func setRequest(){
         
@@ -170,24 +160,14 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
         
         var parameters = ["firsrtName": regFirstNameTxtField.text, "lastName": regLastNameTxtField.text,"email": regEmailTxtField.text,"password": regPassWordTxtField.text,"phone": regPhoneNoTxtField.text] as Dictionary<String, String>
         
-    
-        
         var err: NSError?
         
         theRequest.HTTPBody = NSJSONSerialization.dataWithJSONObject(parameters, options: nil, error: &err) // pass dictionary to nsdata object and set it as request body
         
         theRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         theRequest.addValue("application/json", forHTTPHeaderField: "Accept")
-
         
-        //var dats = NSJSONSerialization.dataWithJSONObject(dict, options: 0, error: nil)
-        
-        
-        //theRequest.HTTPBody = dats
-        
-        
-       //NSLog("\(bod.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true))" )
-        
+    
         var connectRequest  = NSURLConnection(request: theRequest, delegate: self)
         
     }
@@ -197,6 +177,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
         
         myrespData = NSMutableData()
     }
+
     
     
     func connection(connection: NSURLConnection, didReceiveData data: NSData) {
@@ -214,9 +195,10 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
         var err: NSError?
         var myResponseData = NSJSONSerialization.JSONObjectWithData(myrespData, options: .MutableLeaves, error: &err) as? NSDictionary
         
-        //let myResponseData: NSDictionary! = NSJSONSerialization.JSONObjectWithData(myrespData, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSDictionary
         
-        var regPushVC = LoginPageViewController()
+        var regPushVC = LoginViewController()
+        
+        //var regPushVC = LoginViewController()
         
         
         
@@ -225,9 +207,6 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
         
         
         view.alpha=0;
-        
-        
-        
         
         let appdelegateObject = (UIApplication.sharedApplication().delegate as! AppDelegate)
         
@@ -251,21 +230,15 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
         
         appdelegateObject.saveContext()
         self.navigationController?.pushViewController(regPushVC, animated:true)
-
+        
         
     }
     
     func connection(connection: NSURLConnection, didFailWithError error: NSError) {
         
-        
-        
-        
+       
         NSLog("\(error)")
     }
-    
-    
-
-
     
     
     

@@ -34,10 +34,7 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
     
     @IBOutlet weak var DateCollectionView: UICollectionView!
     
-   
-    
-    
-    
+       
      var dateCellIdentifier = "DATE_CELL"
     var dateCellIdentifier1 = "ATTENDANCE_CELL"
     
@@ -108,9 +105,6 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
         var nibName1 = UINib(nibName: "AttendanceCollectionViewCell", bundle: nil)
         
         
-        //var nibName2 = UINib(nibName: "AttendanceCollectionViewCell", bundle: nil)
-        
-        
         
         self.attendanceCollectionView.registerNib(nibName1, forCellWithReuseIdentifier: dateCellIdentifier1)
         
@@ -118,6 +112,7 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
         
     
     }
+    
     
     func configureDisDate(){
         
@@ -145,11 +140,8 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
         if let array = result {
         
         for currentPerson in array as [SmarteModel]  {
-            
-        
-            
+           
             arr .addObject(currentPerson)
-            
             
             println(arr)
             
@@ -207,13 +199,7 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
           var cella = collectionView.dequeueReusableCellWithReuseIdentifier(dateCellIdentifier, forIndexPath: indexPath) as! DateCollectionViewCell
             
             
-           
-            
             cella.datelbl.text = dateArr.objectAtIndex(indexPath.row) as! String
-            
-            
-            
-            //cella.datelbl.text = "\(TimeFormat.stringFromDate(dateFormat))"
             
             
             return cella

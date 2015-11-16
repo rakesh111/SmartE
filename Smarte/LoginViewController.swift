@@ -88,12 +88,12 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
     
     func logSetRequest(){
         
-        var urlString = "http://192.168.1.167:8080/Attendance/register"
+        var urlString = "http://192.168.1.167:8080/Attendance/login"
         
         var url = NSURL(string: urlString)
         
         var theRequest = NSMutableURLRequest(URL: url!)
-        
+       
         theRequest.HTTPMethod = "POST"
         
         
@@ -120,8 +120,6 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
         
         logRespData = NSMutableData()
         
-        
-    
     }
     
     func connection(connection: NSURLConnection, didReceiveData data: NSData) {
@@ -132,6 +130,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
     func connectionDidFinishLoading(connection: NSURLConnection) {
         
         NSLog("\(logRespData)")
+        
+        
         
         var strData = NSString(data: logRespData, encoding: NSUTF8StringEncoding)
         println("Body: \(strData)")
@@ -168,8 +168,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
             
         }
         
-        //var str = arr .objectAtIndex(0).valueForKey("firstName") as! String
-        
+                
         if (arr.count>0) {
             
             
@@ -191,9 +190,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
             self.presentViewController(alert, animated: true, completion: nil)
             
         }
+       
 
-        
-        
         
     }
     
@@ -201,18 +199,6 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
         
         NSLog("\(error)")
     }
-    
-    
-    
-    
-
-        
-        
-        
-        
-    
-    
-    
     
     func configureUsernameTxtField(){
         
