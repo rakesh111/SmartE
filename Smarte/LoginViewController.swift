@@ -10,12 +10,23 @@ import UIKit
 
 import CoreData
 
-class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionDataDelegate {
+import CoreLocation
+
+//import CoreLocation
+
+class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionDataDelegate,CLLocationManagerDelegate {
     
     var logUsername : NSString!
     var logPassword : NSString!
     
     var logRespData:NSMutableData!
+    
+    var locationManager : CLLocationManager!
+    
+    let region = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D"), identifier: "Smarte")
+    
+        
+    
     
     
     
@@ -25,6 +36,26 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        locationManager = CLLocationManager()
+        
+        locationManager.delegate = self
+        
+        if(CLLocationManager.authorizationStatus() != CLAuthorizationStatus.AuthorizedWhenInUse){
+            locationManager.requestWhenInUseAuthorization()
+
+            
+        }
+        
+        
+        configurePasswordTxtField()
+        
+        configureUsernameTxtField()
     }
     
     @IBOutlet weak var usernameTxtField: UITextField!
@@ -142,7 +173,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
         logUsername = usernameTxtField.text
         logPassword  = passwordTxtField.text
         
-        var error: NSError?
+        var error:  NSError?
         
         let fetchRequest = NSFetchRequest(entityName: "SmarteModel")
         
@@ -204,12 +235,12 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
         
         usernameTxtField.delegate = self
     }
-        override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
         
-        configurePasswordTxtField()
-        
-        configureUsernameTxtField()
-         }
+    }
+    
+    
+    
 
 }

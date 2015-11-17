@@ -12,15 +12,33 @@ import CoreData
 import CoreLocation
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
 
     var window: UIWindow?
+    
+    var locationManager : CLLocationManager!
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         
         
+        let region = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D"), identifier: "Smarte")
+        
+        
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        
+        
+        if(CLLocationManager.authorizationStatus() != CLAuthorizationStatus.AuthorizedWhenInUse){
+            locationManager.requestWhenInUseAuthorization()
+            
+        }
+        locationManager.startMonitoringForRegion(region)
+        
+        locationManager.startRangingBeaconsInRegion(region)
+        
+                
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
         
@@ -31,14 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //self.window?.rootViewController = mainView
         
        nav1.viewControllers = [mainView]
-//        
-//        nav1.navigationBar.backgroundColor = UIColor.clearColor()
-//        
-//        nav1.navigationBar.tintColor = UIColor.clearColor()
-        
-        
-      
-        
+
         
         if let window = window {
             
@@ -68,21 +79,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.makeKeyAndVisible()
         
-        let uuidString = "EBEFD083-70A2-47C8-9837-E7B5634DF524"
         
-        let beaconIdentifier = "iBeaconModules.us"
-        
-        let beaconUUID : NSUUID = NSUUID(UUIDString: uuidString)!
-        
-        let beaconRegion : CLBeaconRegion = CLBeaconRegion(proximityUUID: beaconUUID, identifier: beaconIdentifier)
-
-        
-        // Override point for customization after application launch.
         return true
         
         
-        // Override point for customization after application launch.
         
+        
+    }
+    
+    func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
+        
+        let knownBeacons = beacons.filter{$0.proximity != CLProximity.Unknown}
+        
+        if (beacons.count > 0){
+            let closestBeacon = knownBeacons as! CLBeacon
+            
+        }
     }
 
     func applicationWillResignActive(application: UIApplication) {

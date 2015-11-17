@@ -207,6 +207,8 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
             
         }
         else {
+            
+            
            
             var cellb = collectionView.dequeueReusableCellWithReuseIdentifier(dateCellIdentifier1, forIndexPath: indexPath) as! AttendanceCollectionViewCell
             
