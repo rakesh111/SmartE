@@ -176,9 +176,11 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
         var connectRequest  = NSURLConnection(request: theRequest, delegate: self)
         
         regActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+        
+        regActivityIndicatorView.color = UIColor.whiteColor()
         self.view.addSubview(regActivityIndicatorView)
         regActivityIndicatorView.frame = CGRectMake(KScreenWidth1/2-15, KScreenHeight1/2-15, 30, 30)
-        regActivityIndicatorView.color = UIColor.blackColor()
+        regActivityIndicatorView.color = UIColor.whiteColor()
         
         regActivityIndicatorView.startAnimating()
         

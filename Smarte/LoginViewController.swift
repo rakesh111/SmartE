@@ -152,9 +152,11 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
         
         var connectRequest  = NSURLConnection(request: theRequest, delegate: self)
         logActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+        
+        logActivityIndicatorView.color = UIColor.whiteColor()
         self.view.addSubview(logActivityIndicatorView)
         logActivityIndicatorView.frame = CGRectMake(KScreenWidth/2-15, KScreenHeight/2-15, 30, 30)
-        logActivityIndicatorView.color = UIColor.blackColor()
+        //logActivityIndicatorView.color = UIColor.blackColor()
         
         logActivityIndicatorView.startAnimating()
 
