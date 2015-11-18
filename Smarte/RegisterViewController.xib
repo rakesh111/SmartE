@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterViewController" customModule="Smarte" customModuleProvider="target">
             <connections>
-                <outlet property="regButton" destination="X6E-dp-js4" id="ywh-v5-xcM"/>
+                <outlet property="regButton" destination="X6E-dp-js4" id="4Q5-h7-Tby"/>
                 <outlet property="regEmailTxtField" destination="2uh-Jp-bha" id="JNX-NL-Lie"/>
                 <outlet property="regFirstNameTxtField" destination="xHB-wN-nH5" id="lAO-3p-inZ"/>
                 <outlet property="regLastNameTxtField" destination="HOw-NC-QJs" id="eKF-Y0-SzE"/>

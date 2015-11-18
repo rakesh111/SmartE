@@ -101,6 +101,8 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
         
         regPassWordTxtField.delegate = self
         
+        
+        
     }
     
     
