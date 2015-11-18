@@ -12,9 +12,13 @@ import CoreData
 
 import CoreLocation
 
+var KScreenWidth = UIScreen.mainScreen().bounds.size.width
+var KScreenHeight = UIScreen.mainScreen().bounds.size.height
+
 //import CoreLocation
 
 class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionDataDelegate,CLLocationManagerDelegate {
+    
     
     var logUsername : NSString!
     var logPassword : NSString!
@@ -23,6 +27,9 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
     
     var locationManager : CLLocationManager!
     
+    var logActivityIndicatorView = UIActivityIndicatorView()
+    
+        
     let region = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D"), identifier: "Smarte")
     
         
@@ -52,7 +59,6 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
             
         }
         
-        
         configurePasswordTxtField()
         
         configureUsernameTxtField()
@@ -81,6 +87,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         let length = count(textField.text.utf16) + count(string.utf16)-range.length
         return length <= 15
+        
+        
    
 
     }
@@ -90,7 +98,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
         if ((count(usernameTxtField.text) == 0 ) || (count(passwordTxtField.text) == 0))
         {
             
-                var alert = UIAlertController(title: "Error", message: "All fields are mandatory", preferredStyle: UIAlertControllerStyle.Alert)
+                var alert = UIAlertController(title: "Smarte", message: "All fields are mandatory", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
         }
@@ -101,6 +109,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
         }
         
     }
+    
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         
     view.endEditing(true)
@@ -142,6 +151,13 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
         
         
         var connectRequest  = NSURLConnection(request: theRequest, delegate: self)
+        logActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+        self.view.addSubview(logActivityIndicatorView)
+        logActivityIndicatorView.frame = CGRectMake(KScreenWidth/2-15, KScreenHeight/2-15, 30, 30)
+        logActivityIndicatorView.color = UIColor.blackColor()
+        
+        logActivityIndicatorView.startAnimating()
+
         
     }
     
@@ -161,6 +177,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
     func connectionDidFinishLoading(connection: NSURLConnection) {
         
         NSLog("\(logRespData)")
+        
+        logActivityIndicatorView.stopAnimating()
         
         
         
@@ -203,7 +221,9 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
         if (arr.count>0) {
             
             
+            
             var logPushVC = LoginPageViewController()
+            
             
             
             logPushVC.logUsername = usernameTxtField.text
@@ -216,7 +236,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
             
         else
         {
-            var alert = UIAlertController(title: "Invalid Credentials!", message: " Please register to log in", preferredStyle: UIAlertControllerStyle.Alert)
+            var alert = UIAlertController(title: "Smarte", message: " Please register to login", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
             

@@ -10,6 +10,9 @@ import UIKit
 
 import CoreData
 
+var KScreenWidth1 = UIScreen.mainScreen().bounds.size.width
+var KScreenHeight1 = UIScreen.mainScreen().bounds.size.height
+
 
 let appdelegateObject = (UIApplication.sharedApplication().delegate as! AppDelegate)
 
@@ -27,6 +30,8 @@ let fetchRequest = NSFetchRequest(entityName: "SmarteModel")
 class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnectionDataDelegate{
     
     var myrespData : NSMutableData!
+    
+    var regActivityIndicatorView = UIActivityIndicatorView()
     
     init() {
         super.init(nibName : "RegisterViewController", bundle:nil)
@@ -170,6 +175,16 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
     
         var connectRequest  = NSURLConnection(request: theRequest, delegate: self)
         
+        regActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+        self.view.addSubview(regActivityIndicatorView)
+        regActivityIndicatorView.frame = CGRectMake(KScreenWidth1/2-15, KScreenHeight1/2-15, 30, 30)
+        regActivityIndicatorView.color = UIColor.blackColor()
+        
+        regActivityIndicatorView.startAnimating()
+        
+        
+        
+        
     }
     
     func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
@@ -189,6 +204,8 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
     func connectionDidFinishLoading(connection: NSURLConnection) {
         
         NSLog("\(myrespData)")
+        
+        regActivityIndicatorView.stopAnimating()
         
         var strData = NSString(data: myrespData, encoding: NSUTF8StringEncoding)
         println("Body: \(strData)")

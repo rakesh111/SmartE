@@ -75,15 +75,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate{
             
         }
         
-        
-        
         window?.makeKeyAndVisible()
         
         
         return true
-        
-        
-        
         
     }
     
