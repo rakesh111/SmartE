@@ -149,7 +149,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
     
     func setRequest(){
         
-        var urlString = "http://192.168.1.167:8080/Attendance/register"
+        var urlString = "http://192.168.1.167:8090/Attendance/register"
         
         var url = NSURL(string: urlString)
         

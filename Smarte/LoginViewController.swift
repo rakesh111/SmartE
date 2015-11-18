@@ -119,7 +119,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
     
     func logSetRequest(){
         
-        var urlString = "http://192.168.1.167:8080/Attendance/login"
+        var urlString = "http://192.168.1.167:8090/Attendance/login"
         
         var url = NSURL(string: urlString)
         
