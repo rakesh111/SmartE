@@ -77,10 +77,10 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
     
     @IBAction func regButton(sender: AnyObject) {
         
-        if((count(regFirstNameTxtField.text) == 0) &&
-        (count(regLastNameTxtField.text) == 0) &&
-        (count(regPassWordTxtField.text) == 0) &&
-        (count(regEmailTxtField.text) == 0) &&
+        if((count(regFirstNameTxtField.text) == 0) ||
+        (count(regLastNameTxtField.text) == 0) ||
+        (count(regPassWordTxtField.text) == 0) ||
+        (count(regEmailTxtField.text) == 0) ||
         (count(regPhoneNoTxtField.text) == 0)) {
             
             var alert = UIAlertController(title: "Error", message: "All fields are mandatory", preferredStyle: UIAlertControllerStyle.Alert)

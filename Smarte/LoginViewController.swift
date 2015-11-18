@@ -87,7 +87,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
     
     @IBAction func loginPush(sender : AnyObject) {
         
-        if ((count(usernameTxtField.text) == 0 ) && (count(passwordTxtField.text) == 0))
+        if ((count(usernameTxtField.text) == 0 ) || (count(passwordTxtField.text) == 0))
         {
             
                 var alert = UIAlertController(title: "Error", message: "All fields are mandatory", preferredStyle: UIAlertControllerStyle.Alert)
