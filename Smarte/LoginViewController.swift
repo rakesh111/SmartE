@@ -19,7 +19,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
     var logUsername : NSString!
     var logPassword : NSString!
     
-    var logRespData:NSMutableData!
+    var logRespData : NSMutableData!
     
     var locationManager : CLLocationManager!
     

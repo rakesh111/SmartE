@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterViewController" customModule="Smarte" customModuleProvider="target">
             <connections>
-                <outlet property="regButton" destination="X6E-dp-js4" id="yKi-nk-iHD"/>
+                <outlet property="regButton" destination="X6E-dp-js4" id="ywh-v5-xcM"/>
                 <outlet property="regEmailTxtField" destination="2uh-Jp-bha" id="JNX-NL-Lie"/>
                 <outlet property="regFirstNameTxtField" destination="xHB-wN-nH5" id="lAO-3p-inZ"/>
                 <outlet property="regLastNameTxtField" destination="HOw-NC-QJs" id="eKF-Y0-SzE"/>
@@ -93,7 +93,7 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="regButton:" destination="-1" eventType="touchUpInside" id="PRN-xX-eAp"/>
+                                <action selector="regButton:" destination="-1" eventType="touchUpInside" id="Imn-5Y-TAb"/>
                             </connections>
                         </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="Text Bg.png" id="xHB-wN-nH5">

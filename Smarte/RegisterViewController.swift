@@ -24,7 +24,7 @@ let fetchRequest = NSFetchRequest(entityName: "SmarteModel")
 
 
 
-class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnectionDataDelegate,UIAlertViewDelegate{
+class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnectionDataDelegate{
     
     var myrespData : NSMutableData!
     
@@ -92,7 +92,6 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
         
         else {
             
-            
              setRequest()
         }
     }
@@ -101,8 +100,6 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
         regPassWordTxtField.secureTextEntry = true
         
         regPassWordTxtField.delegate = self
-        
-        
         
     }
     
@@ -231,19 +228,10 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
         
         appdelegateObject.saveContext()
         
-        var alert = UIAlertController(title: "Registration Successfull", message: "You have successfully registered! Please login to continue", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alert, animated: true) { () -> Void in
-            
-             self.navigationController?.pushViewController(regPushVC, animated:true)
-        }
-
-    }
-    
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        self.navigationController?.pushViewController(regPushVC, animated:true)
+        
         
     }
-    
     
     func connection(connection: NSURLConnection, didFailWithError error: NSError) {
         
