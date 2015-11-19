@@ -88,7 +88,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
         (count(regEmailTxtField.text) == 0) ||
         (count(regPhoneNoTxtField.text) == 0)) {
             
-            var alert = UIAlertController(title: "Error", message: "All fields are mandatory", preferredStyle: UIAlertControllerStyle.Alert)
+            var alert = UIAlertController(title: "Smarte", message: "All fields are mandatory", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
             

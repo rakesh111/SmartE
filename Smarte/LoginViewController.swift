@@ -32,10 +32,6 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
         
     let region = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D"), identifier: "Smarte")
     
-        
-    
-    
-    
     
     init() {
         super.init(nibName : "LoginViewController", bundle:nil)
@@ -52,6 +48,9 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
         locationManager = CLLocationManager()
         
         locationManager.delegate = self
+        
+        
+        
         
         if(CLLocationManager.authorizationStatus() != CLAuthorizationStatus.AuthorizedWhenInUse){
             locationManager.requestWhenInUseAuthorization()
@@ -89,8 +88,6 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
         return length <= 15
         
         
-   
-
     }
     
     @IBAction func loginPush(sender : AnyObject) {
@@ -222,11 +219,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
                 
         if (arr.count>0) {
             
-            
-            
             var logPushVC = LoginPageViewController()
-            
-            
             
             logPushVC.logUsername = usernameTxtField.text
             logPushVC.logPassword = passwordTxtField.text
@@ -238,7 +231,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
             
         else
         {
-            var alert = UIAlertController(title: "Smarte", message: " Please register to login", preferredStyle: UIAlertControllerStyle.Alert)
+            var alert = UIAlertController(title: "Smarte", message: " Invalid credentials! Please register to login", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
             
@@ -260,6 +253,13 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
     
     func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
         
+        let knownBeacons = beacons.filter{$0.proximity != CLProximity.Unknown}
+        
+        if(knownBeacons.count > 0){
+            
+            let closestBeacon = knownBeacons[0] as! CLBeacon
+            
+        }
     }
     
     

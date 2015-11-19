@@ -22,6 +22,7 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
     
     var dateArr : NSMutableArray!
     
+    @IBOutlet weak var logoutLbl: UIButton!
     @IBOutlet weak var hiUserLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
@@ -113,6 +114,14 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
     
     }
     
+    @IBAction func logoutAction(sender: AnyObject) {
+        
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as! [UIViewController];
+        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true);
+
+        
+        
+    }
     
     func configureDisDate(){
         
