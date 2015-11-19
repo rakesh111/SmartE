@@ -11,7 +11,7 @@ import CoreData
 
 
 
-class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate{
+class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,UIAlertViewDelegate{
   
     var logUsername : NSString!
     var logPassword : NSString!
@@ -75,6 +75,8 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
         
         var currdate = NSDate()
         
+        
+        
         dateArr = NSMutableArray()
         
         
@@ -115,13 +117,51 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
     }
     
     @IBAction func logoutAction(sender: AnyObject) {
+        var regPushVC1 = ViewController()
         
-        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as! [UIViewController];
-        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true);
+        var alert = UIAlertController(title: "Smarte", message: " Are you sure you want to log out?", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler:{ action in
+            
+            switch action.style{
+            case .Default:
+                self.navigationController?.popToRootViewControllerAnimated(true)
+                
+            case .Cancel:
+                print("cancel")
+                
+            case .Destructive:
+                print("destructive")
+            }
+        }))
+        
+        alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler:nil))
+//        self.presentViewController(alert, animated: true) { () -> Void in
+//            
+//          self.navigationController?.pushViewController(regPushVC1, animated: true)
+//        
+//        }
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        
+//        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as! [UIViewController];
+//        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true);
 
         
         
     }
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        
+        var regPushVC1 = ViewController()
+        if (buttonIndex == 0){
+            
+           
+            
+           //self.navigationController?.popToViewController(regPushVC1, animated: true)
+        }
+    }
+    
+    
     
     func configureDisDate(){
         
@@ -167,8 +207,6 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
         
         let viewControllers: [UIViewController] = self.navigationController!.viewControllers as! [UIViewController];
         self.navigationController!.popToViewController(viewControllers[viewControllers.count - 2], animated: true);
-        
-        
 
     }
     
