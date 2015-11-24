@@ -249,9 +249,10 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
         
         appdelegateObject.saveContext()
         
+        
         self.navigationController?.pushViewController(regPushVC, animated:true)
         
-        
+       
     }
     
     func connection(connection: NSURLConnection, didFailWithError error: NSError) {

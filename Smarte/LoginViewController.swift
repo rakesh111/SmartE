@@ -192,6 +192,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
         
         var error:  NSError?
         
+        
         let fetchRequest = NSFetchRequest(entityName: "SmarteModel")
         
         
@@ -199,7 +200,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
         
         var  result : [SmarteModel]? = managedContext.executeFetchRequest(fetchRequest, error: nil) as? [SmarteModel]
         
-        var   arr   = NSMutableArray();
+        var arr = NSMutableArray();
         if let array = result {
             
             for currentPerson in array as [SmarteModel]  {
@@ -216,7 +217,6 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
             
         }
         
-                
         if (arr.count>0) {
             
             var logPushVC = LoginPageViewController()
@@ -237,8 +237,6 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
             
         }
        
-
-        
     }
     
     func connection(connection: NSURLConnection, didFailWithError error: NSError) {
@@ -263,6 +261,4 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
     }
     
     
-    
-
 }

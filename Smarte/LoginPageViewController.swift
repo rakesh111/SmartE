@@ -11,12 +11,14 @@ import CoreData
 
 
 
-class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,UIAlertViewDelegate{
+class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,UIAlertViewDelegate,NSURLConnectionDataDelegate{
   
     var logUsername : NSString!
     var logPassword : NSString!
     var username : NSString!
     var pswd : NSString!
+    
+    var responseData : NSMutableData!
     
     
     
@@ -48,7 +50,7 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
         
         super.viewWillAppear(animated)
     }
-
+    
     
     init() {
         super.init(nibName : "LoginPageViewController", bundle:nil)
@@ -59,23 +61,19 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-
     override func viewDidLoad() {
         
         userDisplaylabel()
         
         configureDisDate()
         
-        
+        //urlRequest()
         
         super.viewDidLoad()
         
         let cal = NSCalendar.currentCalendar()
         
         var currdate = NSDate()
-        
-        
         
         dateArr = NSMutableArray()
         
@@ -87,7 +85,7 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
         dateArr.addObject("\(TimeFormat.stringFromDate(currdate))")
 
         
-        for i in 1 ... 3{
+        for i in 1 ... 3 {
             
             currdate = cal.dateByAddingUnit(.DayCalendarUnit, value: -1, toDate: currdate, options:
                 nil)!
@@ -96,7 +94,6 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
             
                   }
     
-        
         
         self.navigationController?.navigationBarHidden = true
         
@@ -116,8 +113,59 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
     
     }
     
+//    func urlRequest(){
+//        
+//        
+//        var urlString = "http://192.168.1.167:8090/Attendance/login"
+//        
+//     var url = NSURL(string: urlString)
+//        
+//        var theRequest = NSMutableURLRequest(URL: url!)
+//        
+//        
+//        var connectRequest = NSURLConnection(request: theRequest, delegate: self)
+//    }
+//    
+//    func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
+//        
+//        NSLog("Recieved response:\(response))")
+//        
+//        responseData = NSMutableData()
+//    }
+//    
+//    
+//    func connection(connection: NSURLConnection, didReceiveData data: NSData) {
+//        
+//        responseData.appendData(data)
+//    }
+//    
+//    func connectionDidFinishLoading(connection: NSURLConnection) {
+//        
+//        NSLog("\(responseData)")
+//        
+//        var strData = NSString(data: responseData, encoding: NSUTF8StringEncoding)
+//        println("Body: \(strData)")
+//
+//        
+//        let timeVal: NSDictionary! = NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSDictionary
+//        
+//        NSLog("Response Value:\(timeVal)")
+//        
+//        var checktimeVal = timeVal.valueForKeyPath("attendances.0.checkin") as! NSNumber
+//        
+//        var checktimeString = NSString(string: "\(checktimeVal)") as! String
+//    
+//    }
+//    
+//    
+//    func connection(connection: NSURLConnection, didFailWithError error: NSError) {
+//        
+//        NSLog("\(error)")
+//    }
+//    
+    
     @IBAction func logoutAction(sender: AnyObject) {
-        var regPushVC1 = ViewController()
+        //var regPushVC1 = ViewController()
         
         var alert = UIAlertController(title: "Smarte", message: " Are you sure you want to log out?", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler:{ action in
@@ -130,38 +178,28 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
                 print("cancel")
                 
             case .Destructive:
+                
                 print("destructive")
             }
         }))
         
         alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler:nil))
-//        self.presentViewController(alert, animated: true) { () -> Void in
-//            
-//          self.navigationController?.pushViewController(regPushVC1, animated: true)
-//        
-//        }
-        self.presentViewController(alert, animated: true, completion: nil)
-        
-        
-//        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as! [UIViewController];
-//        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true);
 
-        
+        self.presentViewController(alert, animated: true, completion: nil)
+       
         
     }
     
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         
         var regPushVC1 = ViewController()
+        
+        
         if (buttonIndex == 0){
-            
+          
            
-            
-           //self.navigationController?.popToViewController(regPushVC1, animated: true)
         }
     }
-    
-    
     
     func configureDisDate(){
         
@@ -220,10 +258,10 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
         var timeString = "\(TimeFormat.stringFromDate(NSDate()))"
         
         timeLbl.text = "\(timeString)"
+        
+        
 
     }
-    
-    
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         
@@ -254,9 +292,7 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
             
         }
         else {
-            
-            
-           
+                       
             var cellb = collectionView.dequeueReusableCellWithReuseIdentifier(dateCellIdentifier1, forIndexPath: indexPath) as! AttendanceCollectionViewCell
             
             
