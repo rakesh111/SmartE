@@ -121,9 +121,6 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
         regFirstNameTxtField.delegate = self
         regLastNameTxtField.delegate = self
         
-        
-        
-        
         regEmailTxtField.delegate = self
         regPhoneNoTxtField.delegate = self
         //regPhoneNoTxtField.keyboardType = UIKeyboardType.NumberPad

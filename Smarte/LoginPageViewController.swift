@@ -18,9 +18,10 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
     var username : NSString!
     var pswd : NSString!
     
-    var responseData : NSMutableData!
+    var swipeResponseData : NSMutableData!
     
     
+    @IBOutlet weak var swipInLbl: UIButton!
     
     var dateArr : NSMutableArray!
     
@@ -113,56 +114,64 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
     
     }
     
-//    func urlRequest(){
-//        
-//        
-//        var urlString = "http://192.168.1.167:8090/Attendance/login"
-//        
-//     var url = NSURL(string: urlString)
-//        
-//        var theRequest = NSMutableURLRequest(URL: url!)
-//        
-//        
-//        var connectRequest = NSURLConnection(request: theRequest, delegate: self)
-//    }
-//    
-//    func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
-//        
-//        NSLog("Recieved response:\(response))")
-//        
-//        responseData = NSMutableData()
-//    }
-//    
-//    
-//    func connection(connection: NSURLConnection, didReceiveData data: NSData) {
-//        
-//        responseData.appendData(data)
-//    }
-//    
-//    func connectionDidFinishLoading(connection: NSURLConnection) {
-//        
-//        NSLog("\(responseData)")
-//        
-//        var strData = NSString(data: responseData, encoding: NSUTF8StringEncoding)
-//        println("Body: \(strData)")
-//
-//        
-//        let timeVal: NSDictionary! = NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSDictionary
-//        
-//        NSLog("Response Value:\(timeVal)")
-//        
-//        var checktimeVal = timeVal.valueForKeyPath("attendances.0.checkin") as! NSNumber
-//        
-//        var checktimeString = NSString(string: "\(checktimeVal)") as! String
-//    
-//    }
-//    
-//    
-//    func connection(connection: NSURLConnection, didFailWithError error: NSError) {
-//        
-//        NSLog("\(error)")
-//    }
-//    
+    @IBAction func swipeInLabel(sender: AnyObject) {
+        
+        var urlString = "http://192.168.1.167:8090/Attendance/attendance"
+        
+        var url = NSURL(string: urlString)
+        
+        var theRequest = NSMutableURLRequest(URL: url!)
+        
+        theRequest.HTTPMethod = "POST"
+        
+        
+        var parameters = ["status":"1","email":"m"] as Dictionary<String, String>
+        
+        var error : NSError?
+        
+        theRequest.HTTPBody = NSJSONSerialization.dataWithJSONObject(parameters, options: nil, error: &error)
+        
+        theRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        theRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        var connectRequest = NSURLConnection(request: theRequest, delegate: self)
+
+    }
+    
+    func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
+        
+        NSLog("Recieved response:\(response)")
+        
+        swipeResponseData = NSMutableData()
+        
+    }
+    
+    func connection(connection: NSURLConnection, didReceiveData data: NSData) {
+        
+        swipeResponseData.appendData(data)
+        
+    }
+    
+    func connectionDidFinishLoading(connection: NSURLConnection) {
+        
+        NSLog("\(swipeResponseData)")
+        
+        var strData = NSString(data: swipeResponseData, encoding: NSUTF8StringEncoding)
+        
+        println("Body: \(strData)")
+        
+        var error : NSError?
+        
+        var myResponseData = NSJSONSerialization.JSONObjectWithData(swipeResponseData, options: .MutableContainers, error: &error) as? NSDictionary
+        
+       
+        
+    }
+    
+    func connection(connection: NSURLConnection, didFailWithError error: NSError) {
+        
+        NSLog("\(error)")
+    }
     
     @IBAction func logoutAction(sender: AnyObject) {
         //var regPushVC1 = ViewController()
@@ -239,14 +248,13 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
        hiUserLbl.text = arr .objectAtIndex(0).valueForKey("firstName") as! String?
         
         
-        
     }
-        @IBAction func loginPageViewBackButton(sender: AnyObject) {
-        
-        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as! [UIViewController];
-        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 2], animated: true);
-
-    }
+//        @IBAction func loginPageViewBackButton(sender: AnyObject) {
+//        
+//        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as! [UIViewController];
+//        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 2], animated: true);
+//
+//    }
     
     
     func timeLoop()

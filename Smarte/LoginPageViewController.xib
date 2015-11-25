@@ -11,6 +11,7 @@
                 <outlet property="dateLbl" destination="sbb-P6-3LF" id="v51-z7-bfT"/>
                 <outlet property="hiUserLbl" destination="oCN-DR-IAd" id="SDd-gG-ybS"/>
                 <outlet property="logoutLbl" destination="y89-oR-OI9" id="TV8-1f-ybx"/>
+                <outlet property="swipInLbl" destination="73O-3L-ezR" id="3hK-lG-36c"/>
                 <outlet property="timeLbl" destination="OUq-fI-g9d" id="kMt-QN-fsM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -28,6 +29,9 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="swipeInLabel:" destination="-1" eventType="touchUpInside" id="TPi-xg-sl2"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sbb-P6-3LF">
                     <rect key="frame" x="8" y="147" width="138" height="21"/>
@@ -36,16 +40,6 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Elm-lT-urK">
-                    <rect key="frame" x="8" y="27" width="32" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" backgroundImage="Back-120X120.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="loginPageViewBackButton:" destination="-1" eventType="touchUpInside" id="oxx-wX-swp"/>
-                    </connections>
-                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OUq-fI-g9d">
                     <rect key="frame" x="228" y="147" width="139" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
@@ -60,20 +54,6 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" id="X42-aQ-Gvx">
-                    <rect key="frame" x="8" y="265" width="359" height="79"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="44X-61-7LD">
-                        <size key="itemSize" width="105" height="64"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="7" maxX="0.0" maxY="5"/>
-                    </collectionViewFlowLayout>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="cIt-by-LRE"/>
-                    </connections>
-                </collectionView>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" id="eje-EC-Uhz">
                     <rect key="frame" x="8" y="183" width="359" height="79"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -100,6 +80,20 @@
                         <action selector="logoutAction:" destination="-1" eventType="touchUpInside" id="63l-zj-jgd"/>
                     </connections>
                 </button>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" id="X42-aQ-Gvx">
+                    <rect key="frame" x="8" y="265" width="359" height="79"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="44X-61-7LD">
+                        <size key="itemSize" width="105" height="64"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="7" maxX="0.0" maxY="5"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="cIt-by-LRE"/>
+                    </connections>
+                </collectionView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -107,7 +101,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Back-120X120.png" width="120" height="120"/>
         <image name="Text Bg.png" width="250" height="85"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

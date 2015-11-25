@@ -85,7 +85,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         let length = count(textField.text.utf16) + count(string.utf16)-range.length
-        return length <= 15
+        return length <= 100
         
         
     }
@@ -145,8 +145,6 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
         theRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         theRequest.addValue("application/json", forHTTPHeaderField: "Accept")
         
-        
-        
         var connectRequest  = NSURLConnection(request: theRequest, delegate: self)
         logActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
         
@@ -184,11 +182,12 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
         var strData = NSString(data: logRespData, encoding: NSUTF8StringEncoding)
         println("Body: \(strData)")
         var err: NSError?
-        var myResponseData = NSJSONSerialization.JSONObjectWithData(logRespData, options: .MutableLeaves, error: &err) as? NSDictionary
+        var myResponseData = NSJSONSerialization.JSONObjectWithData(logRespData, options: .MutableContainers, error: &err) as? NSDictionary
         
         
         logUsername = usernameTxtField.text
         logPassword  = passwordTxtField.text
+        
         
         var error:  NSError?
         
