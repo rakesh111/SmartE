@@ -21,6 +21,6 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Allow beacons to detect </string>
+	<string>Allow beacons to access your location</string>
 </dict>
 </plist>

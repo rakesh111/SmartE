@@ -22,6 +22,7 @@
     CLLocationManager *locationManager;
     
     
+    
     CLBeaconRegion *beaconRegion;
 }
 

@@ -9,14 +9,22 @@
 import UIKit
 import CoreData
 
+import CoreLocation
 
+import CoreBluetooth
 
-class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,UIAlertViewDelegate,NSURLConnectionDataDelegate{
+var locationManager : CLLocationManager!
+
+class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,UIAlertViewDelegate,NSURLConnectionDataDelegate,CLLocationManagerDelegate{
   
     var logUsername : NSString!
     var logPassword : NSString!
+    
+    
     var username : NSString!
     var pswd : NSString!
+    
+    var locationManager : CLLocationManager!
     
     var swipeResponseData : NSMutableData!
     
@@ -34,8 +42,6 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
     
     @IBOutlet weak var attendanceCollectionView: UICollectionView!
     
-    
-    
     @IBOutlet weak var DateCollectionView: UICollectionView!
     
        
@@ -45,13 +51,10 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
     
     override func viewWillAppear(animated: Bool) {
         
-        
-        
         view.alpha=1
         
         super.viewWillAppear(animated)
     }
-    
     
     init() {
         super.init(nibName : "LoginPageViewController", bundle:nil)
@@ -67,6 +70,16 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
         userDisplaylabel()
         
         configureDisDate()
+        
+        //startScanning()
+        
+        locationManager = CLLocationManager()
+        
+        locationManager.delegate = self
+        
+        locationManager.requestWhenInUseAuthorization()
+        
+                
         
         //urlRequest()
         
@@ -85,7 +98,7 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
         
         dateArr.addObject("\(TimeFormat.stringFromDate(currdate))")
 
-        
+    
         for i in 1 ... 3 {
             
             currdate = cal.dateByAddingUnit(.DayCalendarUnit, value: -1, toDate: currdate, options:
@@ -94,7 +107,6 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
              dateArr.addObject("\(TimeFormat.stringFromDate(currdate))")
             
                   }
-    
         
         self.navigationController?.navigationBarHidden = true
         
@@ -106,15 +118,61 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
         var nibName1 = UINib(nibName: "AttendanceCollectionViewCell", bundle: nil)
         
         
-        
         self.attendanceCollectionView.registerNib(nibName1, forCellWithReuseIdentifier: dateCellIdentifier1)
         
                var timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("timeLoop"), userInfo: nil, repeats: true)
         
+        
+    }
     
+    func startScanning(){
+        
+        let uuid = NSUUID(UUIDString: "F7826DA6-4FA2-4E98-8024-BC5B71E0893E")
+        
+        let beaconRegion = CLBeaconRegion(proximityUUID: uuid, major: 61289, minor: 11433, identifier: "Smarte")
+        
+        locationManager.startMonitoringForRegion(beaconRegion)
+        
+        locationManager.startRangingBeaconsInRegion(beaconRegion)
+                
+    }
+    
+    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        
+        if status == .AuthorizedWhenInUse{
+            
+            if CLLocationManager.isMonitoringAvailableForClass(CLBeaconRegion.self){
+                if CLLocationManager.isRangingAvailable(){
+                    
+                    startScanning()
+                }
+            }
+        }
+        
+    }
+    
+    func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
+        
+        if (beacons.count>0){
+            
+        let myBeacon = beacons[0] as! CLBeacon
+           
+            if((myBeacon.major == 61289) && (myBeacon.minor == 11433))
+            {
+                
+                let region = NSUUID(UUIDString: "F7826DA6-4FA2-4E98-8024-BC5B71E0893E")
+                
+                let beaconRegion = CLBeaconRegion(proximityUUID: region, major: 61289, minor: 11433, identifier: "Smarte")
+                
+                
+            }
+        }
+        
     }
     
     @IBAction func swipeInLabel(sender: AnyObject) {
+        
+        
         
         var urlString = "http://192.168.1.167:8090/Attendance/attendance"
         
@@ -124,12 +182,12 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
         
         theRequest.HTTPMethod = "POST"
         
-        
         var parameters = ["status":"1","email":"m"] as Dictionary<String, String>
         
         var error : NSError?
         
         theRequest.HTTPBody = NSJSONSerialization.dataWithJSONObject(parameters, options: nil, error: &error)
+        
         
         theRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         theRequest.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -144,33 +202,39 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
         
         swipeResponseData = NSMutableData()
         
+    
+        
     }
     
     func connection(connection: NSURLConnection, didReceiveData data: NSData) {
         
         swipeResponseData.appendData(data)
         
-    }
+    } 
     
     func connectionDidFinishLoading(connection: NSURLConnection) {
         
         NSLog("\(swipeResponseData)")
         
+        
         var strData = NSString(data: swipeResponseData, encoding: NSUTF8StringEncoding)
         
+        
         println("Body: \(strData)")
+        
         
         var error : NSError?
         
         var myResponseData = NSJSONSerialization.JSONObjectWithData(swipeResponseData, options: .MutableContainers, error: &error) as? NSDictionary
         
-       
         
     }
     
     func connection(connection: NSURLConnection, didFailWithError error: NSError) {
         
         NSLog("\(error)")
+        
+    
     }
     
     @IBAction func logoutAction(sender: AnyObject) {
@@ -178,6 +242,7 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
         
         var alert = UIAlertController(title: "Smarte", message: " Are you sure you want to log out?", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler:{ action in
+            
             
             switch action.style{
             case .Default:
@@ -206,7 +271,7 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
         
         if (buttonIndex == 0){
           
-           
+            
         }
     }
     
@@ -214,6 +279,8 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
         
         
         var dateFormatter = NSDateFormatter()
+        
+    
         dateFormatter.timeStyle = .MediumStyle
         
         dateFormatter.dateFormat = "dd-MMM-YYYY"
@@ -223,6 +290,8 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
         dateLbl.text = "\(dateString)"
     }
 
+    
+    
     
     func userDisplaylabel(){
         
@@ -234,7 +303,7 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
               var  result : [SmarteModel]? = managedContext.executeFetchRequest(fetchRequest, error: nil) as? [SmarteModel]
                 var   arr   = NSMutableArray();
         if let array = result {
-        
+            
         for currentPerson in array as [SmarteModel]  {
            
             arr .addObject(currentPerson)
@@ -267,8 +336,8 @@ class LoginPageViewController: UIViewController,UICollectionViewDataSource,UICol
         
         timeLbl.text = "\(timeString)"
         
+        //timeLbl.text = "\()"
         
-
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{

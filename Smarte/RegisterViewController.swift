@@ -199,6 +199,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
         myrespData.appendData(data)
        
     }
+   
     
     func connectionDidFinishLoading(connection: NSURLConnection) {
         
@@ -232,8 +233,7 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
         let entity =  NSEntityDescription.entityForName("SmarteModel",
             inManagedObjectContext: managedContext)
         
-        
-        
+                
         let dataModel = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
         
         
@@ -243,6 +243,8 @@ class RegisterViewController: UIViewController,UITextFieldDelegate,NSURLConnecti
         dataModel.setValue(regPassWordTxtField.text, forKey: "password")
         
         dataModel.setValue(regPhoneNoTxtField.text, forKey: "phoneNo")
+        
+        
         
         appdelegateObject.saveContext()
         

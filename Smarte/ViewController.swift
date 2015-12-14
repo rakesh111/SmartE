@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ViewController: UIViewController {
     
@@ -35,6 +36,7 @@ class ViewController: UIViewController {
         
         
             }
+    
        override func viewWillAppear(animated: Bool) {
         
         view.alpha = 1
@@ -52,6 +54,7 @@ class ViewController: UIViewController {
       
     }
     
+    
     @IBAction func registerAction(sender: AnyObject) {
         
         var regVC = RegisterViewController()
@@ -62,11 +65,14 @@ class ViewController: UIViewController {
         self.navigationController?.pushViewController(regVC, animated: true)
         
         
+        
     }
         @IBAction func loginAction(sender: AnyObject) {
         
         var logVC = LoginViewController()
                   view.alpha=0;
+            
+            
         self.navigationController?.pushViewController(logVC, animated: true)
     
     }

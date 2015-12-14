@@ -47,9 +47,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
         
         locationManager = CLLocationManager()
         
+        
         locationManager.delegate = self
-        
-        
         
         
         if(CLLocationManager.authorizationStatus() != CLAuthorizationStatus.AuthorizedWhenInUse){
@@ -71,13 +70,13 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
         
         super.viewWillAppear(animated)
         
+        
         view.alpha = 1
     
     }
 
     @IBAction func logInBackButtonAction(sender: AnyObject) {
-        
-        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as! [UIViewController];
+                let viewControllers: [UIViewController] = self.navigationController!.viewControllers as! [UIViewController];
         self.navigationController!.popToViewController(viewControllers[viewControllers.count
             - 2], animated: true);
 
@@ -96,7 +95,11 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
         {
             
                 var alert = UIAlertController(title: "Smarte", message: "All fields are mandatory", preferredStyle: UIAlertControllerStyle.Alert)
+            
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            
+            
+            
                 self.presentViewController(alert, animated: true, completion: nil)
         }
         else
@@ -120,6 +123,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
         
         passwordTxtField.secureTextEntry = true
                 passwordTxtField.delegate = self
+        
        
     }
     
@@ -131,15 +135,13 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
         
         var theRequest = NSMutableURLRequest(URL: url!)
        
-        theRequest.HTTPMethod = "POST"
         
+        theRequest.HTTPMethod = "POST"
         
         var parameters = [ "email": usernameTxtField.text,"password": passwordTxtField.text] as Dictionary<String, String>
         
-        
-        
         var err: NSError?
-        
+       
         theRequest.HTTPBody = NSJSONSerialization.dataWithJSONObject(parameters, options: nil, error: &err) // pass dictionary to nsdata object and set it as request body
         
         theRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -148,19 +150,20 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
         var connectRequest  = NSURLConnection(request: theRequest, delegate: self)
         logActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
         
+        
         logActivityIndicatorView.color = UIColor.whiteColor()
         self.view.addSubview(logActivityIndicatorView)
         logActivityIndicatorView.frame = CGRectMake(KScreenWidth/2-15, KScreenHeight/2-15, 30, 30)
-        //logActivityIndicatorView.color = UIColor.blackColor()
+       
         
         logActivityIndicatorView.startAnimating()
-
         
     }
     
     func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
         
         NSLog("received response\(response)")
+        
         
         logRespData = NSMutableData()
         
@@ -178,7 +181,6 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
         logActivityIndicatorView.stopAnimating()
         
         
-        
         var strData = NSString(data: logRespData, encoding: NSUTF8StringEncoding)
         println("Body: \(strData)")
         var err: NSError?
@@ -187,17 +189,20 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
         
         logUsername = usernameTxtField.text
         logPassword  = passwordTxtField.text
+    
         
         
         var error:  NSError?
-        
-        
+                
         let fetchRequest = NSFetchRequest(entityName: "SmarteModel")
         
         
         fetchRequest.predicate = NSPredicate(format: "emailId like %@ and password like %@",logUsername,logPassword)
         
-        var  result : [SmarteModel]? = managedContext.executeFetchRequest(fetchRequest, error: nil) as? [SmarteModel]
+        
+        
+        
+        var result : [SmarteModel]? = managedContext.executeFetchRequest(fetchRequest, error: nil) as? [SmarteModel]
         
         var arr = NSMutableArray();
         if let array = result {
@@ -219,6 +224,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
         if (arr.count>0) {
             
             var logPushVC = LoginPageViewController()
+            
+            
             
             logPushVC.logUsername = usernameTxtField.text
             logPushVC.logPassword = passwordTxtField.text
@@ -245,19 +252,15 @@ class LoginViewController: UIViewController,UITextFieldDelegate,NSURLConnectionD
     
     func configureUsernameTxtField(){
         
+        
         usernameTxtField.delegate = self
     }
     
     func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
         
-        let knownBeacons = beacons.filter{$0.proximity != CLProximity.Unknown}
         
-        if(knownBeacons.count > 0){
-            
-            let closestBeacon = knownBeacons[0] as! CLBeacon
-            
-        }
-    }
+        
+            }
     
     
 }

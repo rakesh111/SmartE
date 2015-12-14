@@ -88,6 +88,8 @@
         {
             [self.delegate showLocalNotificationWithMessage:[NSString stringWithFormat:@"##%@",message]];
         }
+        
+        
     }
 }
 
